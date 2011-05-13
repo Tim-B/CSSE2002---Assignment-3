@@ -16,7 +16,7 @@ public class ErrorAlert {
     
     public ErrorAlert(String message){
             
-        JOptionPane.showMessageDialog(main.app.getFrame(), message);
+        JOptionPane.showMessageDialog(main.app, message);
         
     }
     

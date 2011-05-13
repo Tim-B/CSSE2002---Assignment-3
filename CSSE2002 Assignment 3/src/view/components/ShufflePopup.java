@@ -15,7 +15,7 @@ public class ShufflePopup {
     
     public static Boolean ShufflePopup(){
     
-        int result = new JOptionPane().showConfirmDialog(main.app.getFrame(), 
+        int result = new JOptionPane().showConfirmDialog(main.app, 
                 
             "Do you want to shuffle the deck?",
                 

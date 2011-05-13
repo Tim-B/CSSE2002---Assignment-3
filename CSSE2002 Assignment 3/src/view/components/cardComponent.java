@@ -7,6 +7,7 @@ package view.components;
 import javax.swing.JButton;
 import models.Card;
 import controllers.cardController;
+import java.awt.Dimension;
 
 /**
  *
@@ -25,6 +26,8 @@ public class cardComponent extends JButton{
         super();
         
         this.card = card;
+        
+        this.setMaximumSize(new Dimension(180, 90));
         
         setActionCommand("card_" + Integer.toString(card.getId()));
         

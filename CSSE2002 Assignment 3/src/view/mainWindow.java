@@ -6,6 +6,9 @@ package view;
 
 import controllers.buttonController;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Panel;
 import java.util.logging.Level;
@@ -13,6 +16,8 @@ import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import models.BadCardException;
 import models.Card;
@@ -25,9 +30,7 @@ import view.components.cardComponent;
  *
  * @author Tim
  */
-public abstract class mainWindow {
-    
-    protected JFrame frame = new JFrame();
+public abstract class mainWindow extends JFrame{
     
     protected buttonController uiController = new buttonController();
     
@@ -36,27 +39,28 @@ public abstract class mainWindow {
     
     public mainWindow(){
         
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         makeGUI();
   
-        frame.setSize(500,500);
+        this.setSize(800,600);
         
-        frame.setVisible(true);
+        this.setVisible(true);
         
     }
     
-    public JFrame getFrame(){
+    public Game getGame(){
         
-        return frame;
+        return game;
         
     }
+    
     
     private void makeGUI(){
         
         Panel panel = new Panel();
         
-        panel.setLayout(new BorderLayout());
+        panel.setLayout(new GridLayout(2,1));
         
         
         JButton button = new JButton();
@@ -75,33 +79,48 @@ public abstract class mainWindow {
             
             Panel topPanel = new Panel();
             topPanel.setLayout(new GridLayout(1,4));
-            panel.add(topPanel, BorderLayout.NORTH);
+            
+            panel.add(topPanel);
             
             
             Panel bottomPanel = new Panel();
             topPanel.setLayout(new GridLayout(1,1));
-            panel.add(bottomPanel, BorderLayout.SOUTH);
+            panel.add(bottomPanel);
             
             /**Adding the scrolling panels to the top panel */
             
-            Card subjectCard = new SubjectCardImpl("Foobar");
-            cardComponent card = new cardComponent(subjectCard);
-            card.setText("PLayer 1- Card 1");
             
             Card subjectCard1 = new SubjectCardImpl("Foobar");
-            cardComponent card1 = new cardComponent(subjectCard);
+            cardComponent card1 = new cardComponent(subjectCard1);
             card1.setText("PLayer 1- Card 2");
             
             Card subjectCard2 = new SubjectCardImpl("Foobar");
-            cardComponent card2 = new cardComponent(subjectCard);
+            cardComponent card2 = new cardComponent(subjectCard2);
             card2.setText("PLayer 1- Card 3");
             
             Card subjectCard3 = new SubjectCardImpl("Foobar");
-            cardComponent card3 = new cardComponent(subjectCard);
+            cardComponent card3 = new cardComponent(subjectCard3);
             card3.setText("PLayer 1- Card 3");
             
+            JPanel player1table = new JPanel();
+            
+            player1table.setLayout(new BoxLayout(player1table, BoxLayout.Y_AXIS));
+                        
+            for(int i = 0; i < 50; i++){
+                
+                Card subjectCard = new SubjectCardImpl("Foobar");
+                cardComponent card = new cardComponent(subjectCard);
+                card.setText("Card : "+i);
+                
+                player1table.add(card);
+                
+            }
+            
+            //JScrollPane topPanel_1 = new JScrollPane(list);
+            
            
-            JScrollPane topPanel_1 = new JScrollPane(card);
+            JScrollPane topPanel_1 = new JScrollPane(player1table);
+           
             JScrollPane topPanel_2 = new JScrollPane(card1);
             JScrollPane topPanel_3 = new JScrollPane(card2);
             JScrollPane topPanel_4 = new JScrollPane(card3);
@@ -171,7 +190,7 @@ public abstract class mainWindow {
             System.out.println("Oh Shit");
         }
         
-        frame.add(panel);
+        this.add(panel);
         
         
     }

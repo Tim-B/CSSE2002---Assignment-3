@@ -21,7 +21,7 @@ public class buttonController implements ActionListener{
         
         if(source.equals("hello_world")){
             
-            main.app.game.newRound();
+            main.app.getGame().newRound();
             
         }
         
