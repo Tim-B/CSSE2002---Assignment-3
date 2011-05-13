@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import models.BadCardException;
 import models.Card;
 import models.SubjectCard;
+import models.impl.Game;
 import models.impl.SubjectCardImpl;
 import view.components.cardComponent;
 
@@ -23,10 +24,11 @@ import view.components.cardComponent;
  */
 public abstract class mainWindow {
     
-    private JFrame frame = new JFrame();
-   
+    protected JFrame frame = new JFrame();
     
-    private buttonController uiController = new buttonController();
+    protected buttonController uiController = new buttonController();
+    
+    protected Game game;
     
     
     public mainWindow(){
@@ -38,6 +40,12 @@ public abstract class mainWindow {
         frame.setSize(500,500);
         
         frame.setVisible(true);
+        
+    }
+    
+    public JFrame getFrame(){
+        
+        return frame;
         
     }
     
@@ -63,8 +71,22 @@ public abstract class mainWindow {
             cardComponent card = new cardComponent(subjectCard);
             
             card.setText("Press to dispense foo");
-        
+            
             panel.add(card, BorderLayout.SOUTH);
+            
+            cardComponent card2 = new cardComponent(subjectCard);
+            
+            card2.setText("Press to dispense foo 2 ");
+            
+            panel.add(card2, BorderLayout.NORTH);
+            
+            cardComponent card3 = new cardComponent(subjectCard);
+            
+            card3.setText("Press to dispense foo 3");
+        
+            panel.add(card3, BorderLayout.WEST);
+            
+
         }catch(Exception e){
             System.out.println("Oh Shit");
         }

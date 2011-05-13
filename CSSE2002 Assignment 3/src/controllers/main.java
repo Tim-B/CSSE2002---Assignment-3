@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import models.impl.Game;
 import view.mainWindow;
 
 /**
@@ -12,9 +13,19 @@ import view.mainWindow;
  */
 public class main extends mainWindow{
     
+    public static main app;
+    
      public static void main(String[] a){
-   
-         new main();
+         
+         app = new main();
+         
+         app.newGame();
+         
+     }
+     
+     public void newGame(){
+         
+         game = new Game();
          
      }
     
