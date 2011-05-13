@@ -11,7 +11,7 @@ import view.components.cardComponent;
 
 
 /**
- *
+ *Michaels and mc
  * @author Tim
  */
 public class cardController implements ActionListener{
