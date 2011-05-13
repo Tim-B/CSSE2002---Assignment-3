@@ -7,18 +7,14 @@ package models.impl;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import models.BadCardException;
+
 import models.BadFormatException;
 import models.Deck;
 import models.Player;
 import view.components.ErrorAlert;
-import java.util.Iterator;
-import models.BonusCard;
+
 import models.Card;
-import models.SubjectCard;
-import view.cardSelectWindow;
+
 import view.components.ShufflePopup;
 
 /**
@@ -101,15 +97,15 @@ public class Game{
         
     }
     
-    public Iterator allPlayerIterator(){
+    public ArrayList<Player> allPlayers(){
         
-        return allPlayers.iterator();
+        return allPlayers;
         
     }
     
-    public Iterator vPlayerIterator(){
+    public ArrayList<VirtualPlayer> vPlayers(){
         
-        return vPlayers.iterator();
+        return vPlayers;
         
     }
     
@@ -131,17 +127,12 @@ public class Game{
         
         Card playCard;
         
-        /*
         
-        player.setCardToPlay(playCard);
+    }
+    
+    public int getNumberPlayers(){
         
-        if(playCard instanceof BonusCard){
-            
-            
-            
-        }
-         * 
-         */
+        return allPlayers.size();
         
     }
     

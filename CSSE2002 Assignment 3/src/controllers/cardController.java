@@ -7,7 +7,7 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import models.Card;
-import view.components.cardComponent;
+import view.components.CardComponent;
 
 
 /**
@@ -18,7 +18,7 @@ public class cardController implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         
-        cardComponent cardComp = (cardComponent) e.getSource();
+        CardComponent cardComp = (CardComponent) e.getSource();
         
         Card card = cardComp.getCard();
         

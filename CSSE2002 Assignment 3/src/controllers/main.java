@@ -18,14 +18,6 @@ public class main extends mainWindow{
          
          app = new main();
          
-         app.newGame();
-         
      }
      
-     public void newGame(){
-         
-         game = new Game();
-         
-     }
-    
 }
