@@ -7,11 +7,19 @@ package models.impl;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.BadCardException;
 import models.BadFormatException;
 import models.Deck;
 import models.Player;
 import view.components.ErrorAlert;
 import java.util.Iterator;
+import models.BonusCard;
+import models.Card;
+import models.SubjectCard;
+import view.cardSelectWindow;
+import view.components.ShufflePopup;
 
 /**
  *
@@ -40,6 +48,12 @@ public class Game{
         try {
             
             deck = DeckLoader.getInstance().load(deckFile);
+            
+            if(ShufflePopup.ShufflePopup()){
+                
+                deck.shuffle();
+                
+            }
             
             player = new GUIPlayer(deck);
             
@@ -110,6 +124,24 @@ public class Game{
             }
             
         }
+        
+    }
+    
+    public void newRound(){
+        
+        Card playCard;
+        
+        /*
+        
+        player.setCardToPlay(playCard);
+        
+        if(playCard instanceof BonusCard){
+            
+            
+            
+        }
+         * 
+         */
         
     }
     

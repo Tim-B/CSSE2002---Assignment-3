@@ -8,7 +8,6 @@ import models.impl.Game;
 import view.mainWindow;
 
 /**
- * Foobar
  * @author Tim
  */
 public class main extends mainWindow{

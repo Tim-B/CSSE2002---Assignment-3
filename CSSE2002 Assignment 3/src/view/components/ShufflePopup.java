@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class ShufflePopup {
     
-    public Boolean ShufflePopup(){
+    public static Boolean ShufflePopup(){
     
         int result = new JOptionPane().showConfirmDialog(main.app.getFrame(), 
                 

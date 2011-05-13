@@ -20,7 +20,9 @@ public class buttonController implements ActionListener{
         String source = e.getActionCommand();
         
         if(source.equals("hello_world")){
-            System.out.println("pressed!");
+            
+            main.app.game.newRound();
+            
         }
         
     }
