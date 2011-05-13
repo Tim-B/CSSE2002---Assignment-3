@@ -10,7 +10,7 @@ import javax.swing.JButton;
  *
  * @author Tim
  */
-public class button extends JButton{
+public class buttonComponent extends JButton{
     
     
 }

@@ -1,14 +1,14 @@
-package au.edu.uq.itee.csse2002.sem12011.impl;
+package models.impl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import au.edu.uq.itee.csse2002.sem12011.BonusCard;
-import au.edu.uq.itee.csse2002.sem12011.Card;
-import au.edu.uq.itee.csse2002.sem12011.Deck;
-import au.edu.uq.itee.csse2002.sem12011.FreezeSubjectCard;
-import au.edu.uq.itee.csse2002.sem12011.Player;
-import au.edu.uq.itee.csse2002.sem12011.SubjectCard;
+import models.BonusCard;
+import models.Card;
+import models.Deck;
+import models.FreezeSubjectCard;
+import models.Player;
+import models.SubjectCard;
 
 /** A virtual player controlled by the computer. 
  *  @author Graeme Smith

@@ -1,14 +1,14 @@
-package au.edu.uq.itee.csse2002.sem12011.impl;
+package models.impl;
 
 import java.util.ArrayList;
 
-import au.edu.uq.itee.csse2002.sem12011.BonusCard;
-import au.edu.uq.itee.csse2002.sem12011.Card;
-import au.edu.uq.itee.csse2002.sem12011.Deck;
-import au.edu.uq.itee.csse2002.sem12011.FreezeSubjectCard;
-import au.edu.uq.itee.csse2002.sem12011.Player;
-import au.edu.uq.itee.csse2002.sem12011.SubjectCard;
-import au.edu.uq.itee.csse2002.sem12011.UserException;
+import models.BonusCard;
+import models.Card;
+import models.Deck;
+import models.FreezeSubjectCard;
+import models.Player;
+import models.SubjectCard;
+import models.UserException;
 
 /** A player controlled via the GUI by a human user.
  * @author Graeme Smith

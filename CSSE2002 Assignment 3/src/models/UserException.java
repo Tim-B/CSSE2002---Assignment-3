@@ -1,4 +1,4 @@
-package au.edu.uq.itee.csse2002.sem12011;
+package models;
 
 /** This exception is thrown when the user enters invalid input.
  */

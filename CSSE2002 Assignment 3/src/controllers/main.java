@@ -10,13 +10,11 @@ import view.mainWindow;
  *
  * @author Tim
  */
-public class main {
+public class main extends mainWindow{
     
      public static void main(String[] a){
-         
-         mainWindow window = mainWindow.getInstance();
-         
-         window.drawView();
+   
+         new main();
          
      }
     

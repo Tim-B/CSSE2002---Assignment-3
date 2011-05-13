@@ -4,37 +4,40 @@
  */
 package view;
 
-import controllers.uiController;
+import controllers.buttonController;
 import java.awt.BorderLayout;
 import java.awt.Panel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import models.BadCardException;
+import models.Card;
+import models.SubjectCard;
+import models.impl.SubjectCardImpl;
+import view.components.cardComponent;
 
 /**
  *
  * @author Tim
  */
-public class mainWindow {
+public abstract class mainWindow {
     
     private JFrame frame = new JFrame();
+   
     
-    private static mainWindow instance = new mainWindow();
+    private buttonController uiController = new buttonController();
     
-    private uiController uiController = new uiController();
     
-    public static mainWindow getInstance(){
-        
-        return instance;
-        
-    }
-    
-    private mainWindow(){
+    public mainWindow(){
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         makeGUI();
-        
+  
         frame.setSize(500,500);
+        
+        frame.setVisible(true);
         
     }
     
@@ -54,17 +57,22 @@ public class mainWindow {
         
         button.setActionCommand("hello_world");
         
-        panel.add(button, BorderLayout.SOUTH);
+        try{
+            Card subjectCard = new SubjectCardImpl("Foobar");
+
+            cardComponent card = new cardComponent(subjectCard);
+            
+            card.setText("Press to dispense foo");
+        
+            panel.add(card, BorderLayout.SOUTH);
+        }catch(Exception e){
+            System.out.println("Oh Shit");
+        }
         
         frame.add(panel);
         
         
     }
     
-    public void drawView(){
-        
-        frame.setVisible(true);
-        
-    }
     
 }
