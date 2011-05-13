@@ -8,7 +8,7 @@ import models.impl.Game;
 import view.mainWindow;
 
 /**
- *
+ * Hello fucking world
  * @author Tim
  */
 public class main extends mainWindow{
