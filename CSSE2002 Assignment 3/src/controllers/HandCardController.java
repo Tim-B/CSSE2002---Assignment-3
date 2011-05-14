@@ -17,7 +17,7 @@ import view.components.HandCard;
  *
  * @author Tim
  */
-public class HandCardController implements ActionListener{
+public class HandCardController extends CardController{
     
     public void actionPerformed(ActionEvent event){
             

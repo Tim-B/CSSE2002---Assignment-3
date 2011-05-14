@@ -11,10 +11,12 @@ import java.awt.event.ActionListener;
  *
  * @author Tim
  */
-public class TableCardController implements ActionListener{
+public class TableCardController extends CardController{
 
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+        System.out.println("Hello World");
+        
     }
     
 }

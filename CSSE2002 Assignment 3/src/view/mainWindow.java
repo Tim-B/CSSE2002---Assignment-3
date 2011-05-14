@@ -78,23 +78,6 @@ public abstract class mainWindow extends JFrame{
             
             panel.add(new PlayerHand(game));
             
-            /*
-            
-            while(game.getGUIPlayer().getCardsInHandIterator().hasNext()){
-
-                    try {
-                        game.getGUIPlayer().getPlayerTable().putCardOnTable(game.getGUIPlayer().getCardsInHandIterator().next());
-                    } catch (Exception ex) {
-
-                        System.out.println(ex.toString());
-
-                    }
-
-            }
-             * 
-             */
-            
-            
 
         }catch(Exception e){
             System.out.println(e);
