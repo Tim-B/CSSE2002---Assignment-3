@@ -30,6 +30,8 @@ public abstract class mainWindow extends JFrame{
     
     protected Game game;
     
+    protected PlayerHand hand;
+    
     
     public mainWindow(){
         
@@ -76,7 +78,9 @@ public abstract class mainWindow extends JFrame{
            
             panel.add(new TableComponent(game));
             
-            panel.add(new PlayerHand(game));
+            hand = new PlayerHand(game);
+            
+            panel.add(hand);
             
 
         }catch(Exception e){
@@ -94,6 +98,20 @@ public abstract class mainWindow extends JFrame{
         
          
      }
+    
+    public void updateUI(){
+        
+        validate();
+
+        repaint();
+        
+    }
+    
+    public PlayerHand getHand(){
+        
+        return hand;
+        
+    }
     
     
 }

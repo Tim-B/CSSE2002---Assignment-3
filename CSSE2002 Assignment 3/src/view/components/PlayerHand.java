@@ -4,6 +4,7 @@
  */
 package view.components;
 
+import controllers.main;
 import java.awt.GridLayout;
 import java.util.Iterator;
 import javax.swing.JPanel;
@@ -24,13 +25,27 @@ public class PlayerHand extends JPanel{
         
         setLayout(new GridLayout(1,game.getGUIPlayer().getHandSize()));
         
+        rebuildHand();
+        
+    }
+    
+    public void rebuildHand(){
+        
         Iterator<Card> handIterator = game.getGUIPlayer().getCardsInHandIterator();
+        
+        removeAll();
         
         while(handIterator.hasNext()){
             
             add(new HandCard(handIterator.next()));
             
         }
+        
+        //main.app.updateUI();
+        
+        validate();
+        
+        repaint();
         
     }
     

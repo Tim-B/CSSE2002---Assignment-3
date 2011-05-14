@@ -49,9 +49,7 @@ public class CardTable extends JScrollPane{
         
         panel.add(tableCard);
         
-        main.app.validate();
-
-        main.app.repaint();
+        main.app.updateUI();
         
     }
     

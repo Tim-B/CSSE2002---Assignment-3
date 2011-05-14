@@ -1,5 +1,6 @@
 package models.impl;
 
+import controllers.main;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,6 +13,7 @@ import models.FreezeSubjectCard;
 import models.Player;
 import models.SubjectCard;
 import models.UserException;
+import view.components.PlayerHand;
 
 /** A player controlled via the GUI by a human user.
  * @author Graeme Smith
@@ -145,6 +147,8 @@ public class GUIPlayer extends AbstractPlayer {
 		cardToPlay = null;
 		cardToFreeze = null;
 		cardInPlay = null;
+                main.app.getHand().rebuildHand();
 	}
+        
 
 }
