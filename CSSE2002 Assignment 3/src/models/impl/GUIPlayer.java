@@ -135,6 +135,7 @@ public class GUIPlayer extends AbstractPlayer {
 		}
 		if (cardToPlay instanceof SubjectCard) {
 			inPlay.add((SubjectCard)cardToPlay);
+                        getPlayerTable().putCardOnTable(cardToPlay);
 		}
 		if (cardToPlay == null) {
 			pickUp();

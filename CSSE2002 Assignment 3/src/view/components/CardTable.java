@@ -4,6 +4,7 @@
  */
 package view.components;
 
+import controllers.main;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
@@ -47,6 +48,10 @@ public class CardTable extends JScrollPane{
         CardComponent tableCard = new TableCard(card, this);
         
         panel.add(tableCard);
+        
+        main.app.validate();
+
+        main.app.repaint();
         
     }
     
