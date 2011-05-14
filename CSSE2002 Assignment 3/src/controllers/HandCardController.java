@@ -5,6 +5,7 @@
 package controllers;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import models.Card;
 import models.SubjectCard;
 import models.UserException;
@@ -16,7 +17,7 @@ import view.components.HandCard;
  *
  * @author Tim
  */
-public class HandCardController extends CardController{
+public class HandCardController implements ActionListener{
     
     public void actionPerformed(ActionEvent event){
             

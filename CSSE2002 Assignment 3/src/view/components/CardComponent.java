@@ -6,7 +6,6 @@ package view.components;
 
 import javax.swing.JButton;
 import models.Card;
-import controllers.CardController;
 import java.awt.Dimension;
 
 /**
