@@ -17,7 +17,7 @@ public class main extends mainWindow{
      public static void main(String[] a){
          
          app = new main();
-         
+
      }
      
 }

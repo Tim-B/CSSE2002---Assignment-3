@@ -14,6 +14,7 @@ import models.Player;
 import view.components.ErrorAlert;
 
 import models.Card;
+import view.components.PlayerHand;
 
 import view.components.ShufflePopup;
 
@@ -30,6 +31,8 @@ public class Game{
     private ArrayList<VirtualPlayer> vPlayers = new ArrayList();
     
     private Deck deck;
+    
+    private PlayerHand hand;
     
     public Game(){
         
@@ -133,6 +136,18 @@ public class Game{
     public int getNumberPlayers(){
         
         return allPlayers.size();
+        
+    }
+    
+    public PlayerHand getHand(){
+        
+        return hand;
+        
+    }
+    
+    public void setHand(PlayerHand hand){
+        
+        this.hand = hand;
         
     }
     

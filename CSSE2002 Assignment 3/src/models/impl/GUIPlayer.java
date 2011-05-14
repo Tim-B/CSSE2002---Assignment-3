@@ -147,7 +147,7 @@ public class GUIPlayer extends AbstractPlayer {
 		cardToPlay = null;
 		cardToFreeze = null;
 		cardInPlay = null;
-                main.app.getHand().rebuildHand();
+                main.app.getGame().getHand().rebuildHand();
 	}
         
 

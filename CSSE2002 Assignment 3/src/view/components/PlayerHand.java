@@ -7,6 +7,7 @@ package view.components;
 import controllers.main;
 import java.awt.GridLayout;
 import java.util.Iterator;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import models.Card;
 import models.impl.Game;
@@ -17,13 +18,12 @@ import models.impl.Game;
  */
 public class PlayerHand extends JPanel{
     
-    private Game game;
     
-    public PlayerHand(Game game){
+    public PlayerHand(){
         
-        this.game = game;
+        //main.app.getGame().getGUIPlayer().getHandSize())
         
-        setLayout(new GridLayout(1,game.getGUIPlayer().getHandSize()));
+        setLayout(new GridLayout(1,5));
         
         rebuildHand();
         
@@ -31,7 +31,7 @@ public class PlayerHand extends JPanel{
     
     public void rebuildHand(){
         
-        Iterator<Card> handIterator = game.getGUIPlayer().getCardsInHandIterator();
+        Iterator<Card> handIterator = main.app.getGame().getGUIPlayer().getCardsInHandIterator();
         
         removeAll();
         
@@ -41,7 +41,8 @@ public class PlayerHand extends JPanel{
             
         }
         
-        //main.app.updateUI();
+        
+        //add(new JButton("Foobar"));
         
         validate();
         

@@ -19,8 +19,10 @@ public class menuController implements ActionListener{
         
         String source = e.getActionCommand();
         
-        if(source.equals("hello_world")){
-            System.out.println("pressed!");
+        if(source.equals("new_game")){
+            
+            main.app.newGame();
+            
         }
         
     }
