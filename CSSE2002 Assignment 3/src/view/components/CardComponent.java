@@ -6,14 +6,14 @@ package view.components;
 
 import javax.swing.JButton;
 import models.Card;
-import controllers.cardController;
+import controllers.CardController;
 import java.awt.Dimension;
 
 /**
  *
  * @author Tim
  */
-public class CardComponent extends JButton{
+public abstract class CardComponent extends JButton{
     
     Card card;
     
@@ -25,13 +25,11 @@ public class CardComponent extends JButton{
         
         super();
         
-        this.card = card;
+        setCard(card);
         
         this.setMaximumSize(new Dimension(180, 90));
         
         setActionCommand("card_" + Integer.toString(card.getId()));
-        
-        addActionListener(new cardController());
         
     }
     
@@ -40,6 +38,8 @@ public class CardComponent extends JButton{
         this.card = card;
         
         setActionCommand("card_" + Integer.toString(card.getId()));
+        
+        setText("<html>" + card.toHtmlString() + "</html>");
         
     }
     

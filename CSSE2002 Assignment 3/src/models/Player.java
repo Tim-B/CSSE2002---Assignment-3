@@ -1,6 +1,7 @@
 package models;
 
 import java.util.Iterator;
+import view.components.CardTable;
 
 /** A Student's Life player. 
  *  @author Graeme Smith
@@ -50,4 +51,12 @@ public interface Player {
 	 *  @return the iterator
 	 */
 	public Iterator<SubjectCard> getCardsInPlayIterator();
+        
+        public String getPlayerName();
+        
+        public void setPlayerName(String name);
+        
+        public void setPlayerTable(CardTable table);
+        
+        public CardTable getPlayerTable();
 }

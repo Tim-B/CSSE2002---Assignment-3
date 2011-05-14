@@ -12,8 +12,11 @@ import java.awt.Panel;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import models.BadCardException;
 
 import models.impl.Game;
+import models.impl.SubjectCardImpl;
+import view.components.PlayerHand;
 
 import view.components.TableComponent;
 
@@ -30,15 +33,15 @@ public abstract class mainWindow extends JFrame{
     
     public mainWindow(){
         
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         newGame();
 
         makeGUI();
   
-        this.setSize(800,600);
+        setSize(800,600);
         
-        this.setVisible(true);
+        setVisible(true);
         
     }
     
@@ -73,6 +76,24 @@ public abstract class mainWindow extends JFrame{
            
             panel.add(new TableComponent(game));
             
+            panel.add(new PlayerHand(game));
+            
+            /*
+            
+            while(game.getGUIPlayer().getCardsInHandIterator().hasNext()){
+
+                    try {
+                        game.getGUIPlayer().getPlayerTable().putCardOnTable(game.getGUIPlayer().getCardsInHandIterator().next());
+                    } catch (Exception ex) {
+
+                        System.out.println(ex.toString());
+
+                    }
+
+            }
+             * 
+             */
+            
             
 
         }catch(Exception e){
@@ -86,11 +107,8 @@ public abstract class mainWindow extends JFrame{
     
     private void newGame(){
          
-         System.out.println("Foo");
-         
          game = new Game();
-         
-         System.out.println(game.getNumberPlayers());
+        
          
      }
     

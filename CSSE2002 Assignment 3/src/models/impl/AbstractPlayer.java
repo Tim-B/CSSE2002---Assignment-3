@@ -8,6 +8,7 @@ import models.Deck;
 import models.Player;
 import models.SubjectCard;
 import models.UserException;
+import view.components.CardTable;
 
 /** An abstract implementation of the Player interface. The
  *  play method is not implemented.
@@ -23,9 +24,13 @@ public abstract class AbstractPlayer implements Player {
 	
 	/** The player's opponents. */
 	protected ArrayList<Player> opponents; 
+        
+        protected String playerName;
 	
 	/** The deck of cards. */
 	protected Deck deck; 
+        
+        protected CardTable table;
 	
 	public void addOpponent(Player p) {
 		opponents.add(p);
@@ -58,4 +63,33 @@ public abstract class AbstractPlayer implements Player {
 	public Iterator<SubjectCard> getCardsInPlayIterator() {
 		return inPlay.iterator();
 	}
+        
+        public int getHandSize(){
+            
+            return hand.size();
+            
+        }
+        
+        public void setPlayerName(String name){
+            
+            playerName = name;
+            
+        }
+        
+        public String getPlayerName(){
+            
+            return playerName;
+            
+        }
+        
+        public void setPlayerTable(CardTable table){
+            
+            this.table = table;
+        }
+        
+        public CardTable getPlayerTable(){
+            
+            return table;
+            
+        }
 }

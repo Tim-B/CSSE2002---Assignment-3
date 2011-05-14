@@ -1,6 +1,9 @@
 package models.impl;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.BadCardException;
 
 import models.BonusCard;
 import models.Card;
@@ -142,4 +145,5 @@ public class GUIPlayer extends AbstractPlayer {
 		cardToFreeze = null;
 		cardInPlay = null;
 	}
+
 }

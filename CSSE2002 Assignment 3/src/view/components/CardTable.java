@@ -4,11 +4,17 @@
  */
 package view.components;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import models.BadCardException;
 import models.Card;
 import models.Player;
+import models.SubjectCard;
+import models.impl.SubjectCardImpl;
 
 /**
  *
@@ -28,13 +34,17 @@ public class CardTable extends JScrollPane{
         
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         
+        panel.add(new JLabel(player.getPlayerName()));
+        
         getViewport().add(panel);
         
     }
     
     public void putCardOnTable(Card card){
         
-        CardComponent tableCard = new CardComponent(card);
+        System.out.println("Foo 2");
+        
+        CardComponent tableCard = new TableCard(card, this);
         
         panel.add(tableCard);
         

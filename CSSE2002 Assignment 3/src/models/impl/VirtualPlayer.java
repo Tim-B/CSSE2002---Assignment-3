@@ -178,5 +178,7 @@ public class VirtualPlayer extends AbstractPlayer {
 		// no subject cards in the player's hand
 		return false;
 	}
+        
+
 	
 }

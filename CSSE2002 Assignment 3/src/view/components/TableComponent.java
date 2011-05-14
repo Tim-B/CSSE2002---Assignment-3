@@ -6,8 +6,10 @@ package view.components;
 
 import java.awt.GridLayout;
 import javax.swing.JPanel;
+import models.BadCardException;
 import models.Player;
 import models.impl.Game;
+import models.impl.SubjectCardImpl;
 
 /**
  *
@@ -25,6 +27,8 @@ public class TableComponent extends JPanel{
         for(Player player : game.allPlayers()){
             
             CardTable table = new CardTable(player);
+                   
+            player.setPlayerTable(table);
             
             this.add(table);
             

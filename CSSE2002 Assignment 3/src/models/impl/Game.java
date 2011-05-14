@@ -25,12 +25,6 @@ public class Game{
     
     private GUIPlayer player;
     
-    private VirtualPlayer vplayer1;
-    
-    private VirtualPlayer vplayer2;
-    
-    private VirtualPlayer vplayer3;
-    
     private ArrayList<Player> allPlayers = new ArrayList();
     
     private ArrayList<VirtualPlayer> vPlayers = new ArrayList();
@@ -53,19 +47,19 @@ public class Game{
             
             player = new GUIPlayer(deck);
             
-            vplayer1 = new VirtualPlayer(deck);
-            
-            vplayer2 = new VirtualPlayer(deck);
-            
-            vplayer3 = new VirtualPlayer(deck);
-            
-            vPlayers.add(vplayer1);
-            
-            vPlayers.add(vplayer2);
-            
-            vPlayers.add(vplayer3);
+            for(int i = 0; i < 3; i++){
+                
+                VirtualPlayer vPlayer = new VirtualPlayer(deck);
+                
+                vPlayer.setPlayerName("Computer Player "+i);
+                
+                vPlayers.add(vPlayer);
+                
+            }
             
             allPlayers.addAll(vPlayers);
+            
+            player.setPlayerName("Human player");
             
             allPlayers.add(player);
             
@@ -83,7 +77,7 @@ public class Game{
                 
             }
             
-            
+            deal();
             
         } catch (IOException ex) {
             
@@ -113,9 +107,9 @@ public class Game{
         
         for(int i = 0; i < 5; i++){
             
-            for(Player player : allPlayers){
+            for(Player iPlayer : allPlayers){
                 
-                player.receiveCard(deck.pickUp());
+                iPlayer.pickUp();
                 
             }
             
@@ -127,6 +121,12 @@ public class Game{
         
         Card playCard;
         
+        
+    }
+    
+    public GUIPlayer getGUIPlayer(){
+        
+        return player;
         
     }
     
