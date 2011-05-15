@@ -6,6 +6,7 @@ package view.components;
 
 import controllers.TableCardController;
 import models.Card;
+import models.SubjectCard;
 
 /**
  *
@@ -28,6 +29,34 @@ public class TableCard extends CardComponent{
     public CardTable getTable(){
         
         return table;
+        
+    }
+    
+    private void setDetails(){
+        
+        String name = "<html><center><b>" + card.getName() + "</b>";
+        
+        SubjectCard subCard = (SubjectCard) card;
+        
+        if(subCard.isFrozen()){
+            
+            name = name.concat("<br />(FROZEN)");
+            
+        }else if(subCard.isGraded()){
+            
+            name = name.concat("<br />(GRADED)");
+            
+        }
+        
+        name = name.concat("</center></html>");
+        
+        setText(name);
+        
+    }
+    
+    public void update(){
+        
+        setDetails();
         
     }
     

@@ -1,5 +1,7 @@
 package models;
 
+import view.components.TableCard;
+
 /**
  * This class is used to store data associated with a subject card and
  * provide a way to modify and access the state of the card. 
@@ -62,5 +64,9 @@ public interface SubjectCard extends Card {
 	 * @return true if the card has been graded, false otherwise
 	 */
 	public boolean isGraded();
+        
+        public void setGUICard(TableCard card);
+        
+        public TableCard getGUICard();
 	
 }

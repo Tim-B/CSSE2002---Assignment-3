@@ -7,6 +7,7 @@ package view.components;
 import javax.swing.JButton;
 import models.Card;
 import java.awt.Dimension;
+import models.SubjectCard;
 
 /**
  *
@@ -38,13 +39,25 @@ public abstract class CardComponent extends JButton{
         
         setActionCommand("card_" + Integer.toString(card.getId()));
         
-        setText("<html>" + card.toHtmlString() + "</html>");
+        setDetails();
+        
+    }
+    
+    private void setDetails(){
+        
+        setText("<html>" + card.toHtmlString() + "</html>");   
         
     }
     
     public Card getCard(){
         
         return card;
+        
+    }
+    
+    public void update(){
+        
+        setDetails();
         
     }
     

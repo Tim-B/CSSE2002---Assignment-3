@@ -6,6 +6,7 @@ package view.components;
 
 import controllers.HandCardController;
 import models.Card;
+import models.SubjectCard;
 
 /**
  *

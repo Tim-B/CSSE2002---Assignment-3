@@ -41,15 +41,21 @@ public class CardTable extends JScrollPane{
         
     }
     
-    public void putCardOnTable(Card card){
+    public void putCardOnTable(SubjectCard card){
         
-        System.out.println("Foo 2");
+        TableCard tableCard = new TableCard(card, this);
         
-        CardComponent tableCard = new TableCard(card, this);
+        card.setGUICard(tableCard);
         
         panel.add(tableCard);
         
         main.app.updateUI();
+        
+    }
+    
+    public Player getPlayer(){
+        
+        return player;
         
     }
     

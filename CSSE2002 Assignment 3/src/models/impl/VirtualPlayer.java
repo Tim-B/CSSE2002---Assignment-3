@@ -60,6 +60,7 @@ public class VirtualPlayer extends AbstractPlayer {
 					return false;
 				}
 				target.freezeWith((FreezeSubjectCard)c);
+                                target.getGUICard().update();
 				hand.remove(c);
 				return true;
 			}
@@ -117,6 +118,7 @@ public class VirtualPlayer extends AbstractPlayer {
 					SubjectCard s = pi.next(); // next card in play
 					if (s.isFrozen() && ! s.isGraded()) {
 						s.unfreeze();
+                                                s.getGUICard().update();
 						hand.remove(c);
 						return true;
 					}
@@ -148,6 +150,7 @@ public class VirtualPlayer extends AbstractPlayer {
 					SubjectCard s = pi.next(); // the next card in play
 					if (! s.isFrozen() && ! s.isGraded()) {
 						s.gradeWith((FreezeSubjectCard)c);
+                                                s.getGUICard().update();
 						hand.remove(c);
 						return true;
 					}

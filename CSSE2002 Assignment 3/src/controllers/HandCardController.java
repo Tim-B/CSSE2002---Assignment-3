@@ -7,8 +7,10 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import models.Card;
+import models.FreezeSubjectCard;
 import models.SubjectCard;
 import models.UserException;
+import models.impl.FreezeSubjectCardImpl;
 import models.impl.GUIPlayer;
 import view.components.ErrorAlert;
 import view.components.HandCard;
@@ -24,16 +26,11 @@ public class HandCardController extends CardController{
             HandCard cardComponent = (HandCard) event.getSource();
 
             Card card = cardComponent.getCard();
+            
+            GUIPlayer player = main.app.getGame().getGUIPlayer();
+            
+            player.setCardToPlay(card);
 
-            if(card instanceof SubjectCard){
-
-                System.out.println("Fooch");
-
-                GUIPlayer player = main.app.getGame().getGUIPlayer();
-
-                player.setCardToPlay(card);
-                
-            }
                             
         }
 

@@ -6,6 +6,15 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.Card;
+import models.SubjectCard;
+import models.UserException;
+import models.impl.GUIPlayer;
+import view.components.ErrorAlert;
+import view.components.HandCard;
+import view.components.TableCard;
 
 /**
  *
@@ -13,10 +22,32 @@ import java.awt.event.ActionListener;
  */
 public class TableCardController extends CardController{
 
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent event) {
         
-        System.out.println("Hello World");
+        TableCard cardComponent = (TableCard) event.getSource();
+
+        SubjectCard card = (SubjectCard) cardComponent.getCard();
         
+        GUIPlayer player = main.app.getGame().getGUIPlayer();
+        
+        try{
+        
+            if(cardComponent.getTable().getPlayer().equals(player)){
+
+                player.setCardInPlay(card);
+
+            }else{
+
+                player.setCardToFreeze(card);
+
+            }
+        
+        } catch (UserException ex) {
+            
+            new ErrorAlert(ex.toString());
+            
+        }
+            
     }
     
 }

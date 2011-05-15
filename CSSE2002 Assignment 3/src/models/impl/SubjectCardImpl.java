@@ -4,6 +4,7 @@ import models.BadCardException;
 import models.FreezeSubjectCard;
 import models.InvalidActionException;
 import models.SubjectCard;
+import view.components.TableCard;
 
 /**
  * The implementation class for Subject cards.
@@ -15,6 +16,8 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
 
 	/* whether or not the card is graded */
 	private boolean isGraded;
+        
+        private TableCard guiCard;
 
 	/**
 	 * Create a subject card in the default initial state; not
@@ -90,4 +93,16 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
 		return builder.toString();
 	}
 
+        public void setGUICard(TableCard card){
+            
+            guiCard = card;
+            
+        }
+        
+        public TableCard getGUICard(){
+            
+            return guiCard;
+            
+        }
+        
 }

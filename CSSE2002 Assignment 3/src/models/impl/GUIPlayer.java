@@ -2,9 +2,6 @@ package models.impl;
 
 import controllers.main;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import models.BadCardException;
 
 import models.BonusCard;
 import models.Card;
@@ -116,6 +113,7 @@ public class GUIPlayer extends AbstractPlayer {
 				throw new UserException("Need to choose card to freeze.");
 			}
 			cardToFreeze.freezeWith((FreezeSubjectCard)cardToPlay);
+                        cardToFreeze.getGUICard().update();
 		}
 		if (cardToPlay instanceof BonusCard) {
 			if (cardInPlay == null) {
@@ -124,6 +122,7 @@ public class GUIPlayer extends AbstractPlayer {
 				throw new UserException("Need to choose card to unfreeze.");
 			}
 			cardInPlay.unfreeze();
+                        cardInPlay.getGUICard().update();
 		}
 		if (cardToPlay instanceof FreezeSubjectCard &&
 				((FreezeSubjectCard)cardToPlay).getType() == 
@@ -134,14 +133,16 @@ public class GUIPlayer extends AbstractPlayer {
 				throw new UserException("Need to choose card to grade.");
 			}
 			cardInPlay.gradeWith((FreezeSubjectCard)cardToPlay);
+                        cardInPlay.getGUICard().update();
 		}
 		if (cardToPlay instanceof SubjectCard) {
 			inPlay.add((SubjectCard)cardToPlay);
-                        getPlayerTable().putCardOnTable(cardToPlay);
+                        getPlayerTable().putCardOnTable((SubjectCard)cardToPlay);
 		}
 		if (cardToPlay == null) {
 			pickUp();
 		}
+                
 		hand.remove(cardToPlay);
 		// reset card variables for next turn
 		cardToPlay = null;

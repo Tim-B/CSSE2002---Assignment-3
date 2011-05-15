@@ -124,6 +124,7 @@ public class Game{
     }
     
     public void newRound(){
+        
         try {
             
             player.pickUp();
