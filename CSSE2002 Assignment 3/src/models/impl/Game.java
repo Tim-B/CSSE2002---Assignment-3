@@ -7,10 +7,13 @@ package models.impl;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import models.BadFormatException;
 import models.Deck;
 import models.Player;
+import models.UserException;
 import view.components.ErrorAlert;
 
 import models.Card;
@@ -121,9 +124,19 @@ public class Game{
     }
     
     public void newRound(){
-        
-        Card playCard;
-        
+        try {
+            
+            player.pickUp();
+                         
+            player.play();
+            
+            playVPlayers();
+            
+        } catch (UserException ex) {
+            
+            new ErrorAlert(ex.toString());
+            
+        }
         
     }
     
@@ -148,6 +161,16 @@ public class Game{
     public void setHand(PlayerHand hand){
         
         this.hand = hand;
+        
+    }
+    
+    private void playVPlayers(){
+        
+        for(VirtualPlayer vplayer : vPlayers){
+            
+            vplayer.play();
+            
+        }
         
     }
     

@@ -21,34 +21,20 @@ public class HandCardController extends CardController{
     
     public void actionPerformed(ActionEvent event){
             
-            try {
+            HandCard cardComponent = (HandCard) event.getSource();
 
-                HandCard cardComponent = (HandCard) event.getSource();
-        
-                Card card = cardComponent.getCard();
+            Card card = cardComponent.getCard();
 
-                if(card instanceof SubjectCard){
-                    
-                    System.out.println("Fooch");
+            if(card instanceof SubjectCard){
 
-                    GUIPlayer player = main.app.getGame().getGUIPlayer();
+                System.out.println("Fooch");
 
-                    player.setCardToPlay(card);
+                GUIPlayer player = main.app.getGame().getGUIPlayer();
 
-                    player.pickUp();
-                     
-                    player.play();
-                     
-                }
-                
-            } catch (UserException ex) {
-                
-                new ErrorAlert(ex.toString());
+                player.setCardToPlay(card);
                 
             }
-            
-           
-            
+                            
         }
 
     

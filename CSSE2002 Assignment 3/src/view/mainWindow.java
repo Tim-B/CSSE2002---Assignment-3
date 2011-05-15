@@ -10,6 +10,7 @@ import java.awt.FlowLayout;
 
 import java.awt.GridLayout;
 import java.awt.Panel;
+import javax.swing.BoxLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -49,15 +50,17 @@ public abstract class mainWindow extends JFrame{
         
         setVisible(true);
         
+        mainPanel = new JPanel();
+        
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
+        
+        mainPanel.setSize(800,600);
+        
+        add(mainPanel);
+        
     }
     
     public Game getGame(){
-        
-        if(game == null){
-            
-            new ErrorAlert("Game not started");
-            
-        }
         
         return game;
         
@@ -68,17 +71,24 @@ public abstract class mainWindow extends JFrame{
          
         game = new Game();
         
-        add(new GameEnvironmentComponent(game));
+        mainPanel.removeAll();
+        
+        mainPanel.add(new GameEnvironmentComponent(game));
+        
+        mainPanel.revalidate();
+        
+        mainPanel.repaint();
 
         updateUI();
         
      }
     
     public void updateUI(){
-        
-        validate();
 
+        validate();
+        
         repaint();
+        
         
     }  
     

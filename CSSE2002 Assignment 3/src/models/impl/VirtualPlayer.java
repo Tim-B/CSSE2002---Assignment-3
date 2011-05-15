@@ -172,6 +172,7 @@ public class VirtualPlayer extends AbstractPlayer {
 			if (c instanceof SubjectCard) {
 				hand.remove(c);
 				inPlay.add((SubjectCard)c);
+                                getPlayerTable().putCardOnTable((SubjectCard)c);
 				return true;
 			}
 		}

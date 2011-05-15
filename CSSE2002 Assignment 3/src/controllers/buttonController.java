@@ -19,7 +19,7 @@ public class buttonController implements ActionListener{
         
         String source = e.getActionCommand();
         
-        if(source.equals("hello_world")){
+        if(source.equals("next_round")){
             
             main.app.getGame().newRound();
             
