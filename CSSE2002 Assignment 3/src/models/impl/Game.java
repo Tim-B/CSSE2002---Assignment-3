@@ -53,6 +53,8 @@ public class Game{
             
             player = new GUIPlayer(deck);
             
+            allPlayers.add(player);
+            
             for(int i = 0; i < 3; i++){
                 
                 VirtualPlayer vPlayer = new VirtualPlayer(deck);
@@ -66,8 +68,6 @@ public class Game{
             allPlayers.addAll(vPlayers);
             
             player.setPlayerName("Human player");
-            
-            allPlayers.add(player);
             
             for(Player playerItem : allPlayers){
                 
@@ -123,24 +123,6 @@ public class Game{
         
     }
     
-    public void newRound(){
-        
-        try {
-            
-            player.pickUp();
-                         
-            player.play();
-            
-            playVPlayers();
-            
-        } catch (UserException ex) {
-            
-            new ErrorAlert(ex.toString());
-            
-        }
-        
-    }
-    
     public GUIPlayer getGUIPlayer(){
         
         return player;
@@ -164,15 +146,5 @@ public class Game{
         this.hand = hand;
         
     }
-    
-    private void playVPlayers(){
-        
-        for(VirtualPlayer vplayer : vPlayers){
-            
-            vplayer.play();
-            
-        }
-        
-    }
-    
+     
 }

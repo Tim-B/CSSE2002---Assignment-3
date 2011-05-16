@@ -4,6 +4,7 @@
  */
 package view.components;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import models.BadCardException;
@@ -21,6 +22,11 @@ public class TableComponent extends JPanel{
         
         super();
         
+        setPreferredSize(new Dimension(800,350));
+        
+        setMinimumSize(new Dimension(800,350));
+        
+        setMaximumSize(new Dimension(800,350));
         
         setLayout(new GridLayout(1,game.getNumberPlayers()));
         

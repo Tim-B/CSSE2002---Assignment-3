@@ -45,7 +45,7 @@ public abstract class CardComponent extends JButton{
     
     private void setDetails(){
         
-        setText("<html>" + card.toHtmlString() + "</html>");   
+        setText("<html><center><b>" + card.getName() + "</b></center></html>");   
         
     }
     

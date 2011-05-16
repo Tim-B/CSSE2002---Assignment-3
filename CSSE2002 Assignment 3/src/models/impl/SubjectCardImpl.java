@@ -69,13 +69,6 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
                 
                 player.incGrade();
                 
-                if(player.wonGame()){
-                    
-                    new ErrorAlert("Game won by: "+player.getPlayerName());
-                    
-                    main.app.endGame();
-                    
-                }
 	}
 
 	public void unfreeze() throws InvalidActionException {

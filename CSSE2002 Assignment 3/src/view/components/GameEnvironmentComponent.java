@@ -4,6 +4,7 @@
  */
 package view.components;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -27,12 +28,6 @@ public class GameEnvironmentComponent extends JPanel{
         gbContraints.gridy = 0;
         
         gbContraints.fill = GridBagConstraints.BOTH;
-        
-        gbContraints.ipadx = 440;
-        
-        gbContraints.ipady = 260;
-        
-        //gbContraints.fill = GridBagConstraints.HORIZONTAL;
 
         add(new TableComponent(game), gbContraints);
 
@@ -41,14 +36,12 @@ public class GameEnvironmentComponent extends JPanel{
         game.setHand(hand);
         
         gbContraints.gridy = 1;
-        
-        gbContraints.ipady = 120;
 
         add(hand, gbContraints);
         
         ButtonComponent nextRound = new ButtonComponent("Next Round", "next_round");
         
-        gbContraints.ipady = 40;
+        nextRound.setMinimumSize(new Dimension(800, 80));
         
         gbContraints.gridy = 3;
         

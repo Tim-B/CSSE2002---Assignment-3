@@ -6,6 +6,7 @@ package view;
 
 import controllers.buttonController;
 import controllers.main;
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import java.awt.GridLayout;
@@ -16,6 +17,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import models.BadCardException;
+import models.Player;
+import models.UserException;
 
 import models.impl.Game;
 import models.impl.SubjectCardImpl;
@@ -44,7 +47,7 @@ public abstract class mainWindow extends JFrame{
         
         setResizable(false); 
   
-        setSize(800,600);
+        //setSize(800,600);
         
         setJMenuBar(new MenuComponent());
         
@@ -52,11 +55,13 @@ public abstract class mainWindow extends JFrame{
         
         mainPanel = new JPanel();
         
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
+        mainPanel.setLayout(new BorderLayout());
         
-        mainPanel.setSize(800,600);
+        //mainPanel.setSize(800,600);
         
         add(mainPanel);
+        
+        pack();
         
     }
     
@@ -97,12 +102,41 @@ public abstract class mainWindow extends JFrame{
         
     }
     
+    public void newRound(){
+        
+        try {
+                         
+            for(Player currentPlayer : game.allPlayers()){
+                
+                currentPlayer.play();
+                
+                if(currentPlayer.wonGame()){
+                    
+                    new ErrorAlert("Game won by: " + currentPlayer.getPlayerName());
+                    
+                    main.app.endGame();
+                    
+                    break;
+                    
+                }
+            
+            }
+            
+        } catch (Exception ex) {
+            
+            new ErrorAlert(ex.toString());
+            
+        }
+        
+    }
+    
     public void updateUI(){
 
         validate();
         
         repaint();
         
+        pack();
         
     }  
     

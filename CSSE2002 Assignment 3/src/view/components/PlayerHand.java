@@ -5,10 +5,13 @@
 package view.components;
 
 import controllers.main;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.Iterator;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import models.Card;
 import models.impl.Game;
 
@@ -16,14 +19,19 @@ import models.impl.Game;
  *
  * @author Tim
  */
-public class PlayerHand extends JPanel{
+public class PlayerHand extends JScrollPane{
     
+    JPanel handPanel = new JPanel();
     
     public PlayerHand(){
         
-        //main.app.getGame().getGUIPlayer().getHandSize())
+        handPanel.setLayout(new BoxLayout(handPanel, BoxLayout.X_AXIS));
         
-        setLayout(new GridLayout(1,5));
+        getViewport().add(handPanel);
+        
+        setPreferredSize(new Dimension(800,80));
+        
+        setMinimumSize(new Dimension(800,80));
         
         rebuildHand();
         
@@ -33,20 +41,17 @@ public class PlayerHand extends JPanel{
         
         Iterator<Card> handIterator = main.app.getGame().getGUIPlayer().getCardsInHandIterator();
         
-        removeAll();
+        handPanel.removeAll();
         
         while(handIterator.hasNext()){
             
-            add(new HandCard(handIterator.next()));
+            handPanel.add(new HandCard(handIterator.next()));
             
         }
         
+        handPanel.validate();
         
-        //add(new JButton("Foobar"));
-        
-        validate();
-        
-        repaint();
+        handPanel.repaint();
         
     }
     
