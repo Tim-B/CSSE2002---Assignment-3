@@ -31,6 +31,8 @@ public abstract class AbstractPlayer implements Player {
 	protected Deck deck; 
         
         protected CardTable table;
+        
+        protected int numGraded = 0;
 	
 	public void addOpponent(Player p) {
 		opponents.add(p);
@@ -90,6 +92,26 @@ public abstract class AbstractPlayer implements Player {
         public CardTable getPlayerTable(){
             
             return table;
+            
+        }
+        
+        public boolean wonGame(){
+            
+            if(numGraded >= 4){
+                
+                return true;
+                
+            }else{
+                
+                return false;
+                
+            }
+            
+        }
+        
+        public void incGrade(){
+            
+            numGraded++;
             
         }
 }

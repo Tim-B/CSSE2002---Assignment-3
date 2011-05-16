@@ -1,9 +1,12 @@
 package models.impl;
 
+import controllers.main;
 import models.BadCardException;
 import models.FreezeSubjectCard;
 import models.InvalidActionException;
+import models.Player;
 import models.SubjectCard;
+import view.components.ErrorAlert;
 import view.components.TableCard;
 
 /**
@@ -61,6 +64,18 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
 		}
 		cardFrozenBy = card;
 		isGraded = true;
+                
+                Player player = getGUICard().getTable().getPlayer();
+                
+                player.incGrade();
+                
+                if(player.wonGame()){
+                    
+                    new ErrorAlert("Game won by: "+player.getPlayerName());
+                    
+                    main.app.endGame();
+                    
+                }
 	}
 
 	public void unfreeze() throws InvalidActionException {

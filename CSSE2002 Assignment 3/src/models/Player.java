@@ -59,4 +59,8 @@ public interface Player {
         public void setPlayerTable(CardTable table);
         
         public CardTable getPlayerTable();
+        
+        public void incGrade();
+        
+        public boolean wonGame();
 }

@@ -111,10 +111,5 @@ public abstract class CardImpl implements Card {
 			return false;
 		return true;
 	}
-
-        private void fuckYa(){
-
-            System.out.println("fark ya");
-
-        }
+        
 }

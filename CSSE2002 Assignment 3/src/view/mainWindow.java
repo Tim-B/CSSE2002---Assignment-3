@@ -83,6 +83,20 @@ public abstract class mainWindow extends JFrame{
         
      }
     
+    public void endGame(){
+        
+        game = null;
+        
+        mainPanel.removeAll();
+        
+        mainPanel.revalidate();
+        
+        mainPanel.repaint();
+        
+        updateUI();
+        
+    }
+    
     public void updateUI(){
 
         validate();
