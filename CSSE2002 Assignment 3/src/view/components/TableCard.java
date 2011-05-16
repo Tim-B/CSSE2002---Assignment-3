@@ -38,13 +38,13 @@ public class TableCard extends CardComponent{
         
         SubjectCard subCard = (SubjectCard) card;
         
-        if(subCard.isFrozen()){
-            
-            name = name.concat("<br />(FROZEN)");
-            
-        }else if(subCard.isGraded()){
+        if(subCard.isGraded()){
             
             name = name.concat("<br />(GRADED)");
+            
+        }else if(subCard.isFrozen()){
+            
+            name = name.concat("<br />(FROZEN)");
             
         }
         
@@ -57,6 +57,10 @@ public class TableCard extends CardComponent{
     public void update(){
         
         setDetails();
+        
+        revalidate();
+        
+        repaint();
         
     }
     

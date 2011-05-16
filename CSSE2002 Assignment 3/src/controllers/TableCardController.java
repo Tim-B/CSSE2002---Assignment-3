@@ -30,6 +30,8 @@ public class TableCardController extends CardController{
         
         GUIPlayer player = main.app.getGame().getGUIPlayer();
         
+        System.out.println(card.isGraded());
+        
         try{
         
             if(cardComponent.getTable().getPlayer().equals(player)){
