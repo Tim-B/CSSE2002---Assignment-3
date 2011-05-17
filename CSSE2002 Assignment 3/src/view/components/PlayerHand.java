@@ -6,18 +6,14 @@ package view.components;
 
 import controllers.main;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.util.Iterator;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import models.Card;
-import models.impl.Game;
-
 /**
- *
- * @author Tim
+ *The class PlayerHand which extends JscrollPane() and creates a new instance
+ * of JPanel().
  */
 public class PlayerHand extends JScrollPane{
     

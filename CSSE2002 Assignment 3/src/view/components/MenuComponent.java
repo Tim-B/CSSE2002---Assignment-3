@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.components;
 
 import controllers.menuController;
@@ -9,8 +5,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 /**
- *
- * @author Tim
+ *The GUI component which extends JMenuBar and initializes the JMenuItem().
+ * 
  */
 public class MenuComponent extends JMenuBar{
     

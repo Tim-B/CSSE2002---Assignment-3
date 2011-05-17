@@ -1,16 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.components;
 
 import controllers.HandCardController;
 import models.Card;
-import models.SubjectCard;
 
 /**
- *
- * @author Tim
+ *The GUI element class which extends CardComponent and calls 
+ * HandCardController().
+ * 
  */
 public class HandCard extends CardComponent{
     

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.components;
 
 import controllers.TableCardController;
@@ -9,8 +5,8 @@ import models.Card;
 import models.SubjectCard;
 
 /**
+ *The GUI Component class TableCard which extends the CardComponent and controls.
  *
- * @author Tim
  */
 public class TableCard extends CardComponent{
     

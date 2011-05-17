@@ -1,25 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.components;
 
 import controllers.main;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import models.BadCardException;
-import models.Card;
 import models.Player;
 import models.SubjectCard;
-import models.impl.SubjectCardImpl;
+
 
 /**
- *
- * @author Tim
+ *The class CardTable is a GUI object which which extends JScrollPane and
+ * represents the cards a player has.
  */
 public class CardTable extends JScrollPane{
     

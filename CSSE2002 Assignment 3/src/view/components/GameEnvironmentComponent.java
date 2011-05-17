@@ -1,19 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.components;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import javax.swing.JPanel;
 import models.impl.Game;
 
 /**
- *
- * @author Tim
+ *The class GameEnviromentComponent which extends JPanel controls the instance
+ * of game to be used in the GUI element.
+ * 
  */
 public class GameEnvironmentComponent extends JPanel{
     

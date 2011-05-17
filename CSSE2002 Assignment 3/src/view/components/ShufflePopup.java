@@ -1,15 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.components;
 
 import controllers.main;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Tim
+ *The GUI component class ShufflePopup which calls the JOptionPane().
+ * 
  */
 public class ShufflePopup {
     
