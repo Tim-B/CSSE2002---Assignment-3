@@ -1,0 +1,4 @@
+subject,30,Subject Card
+grade,20,Grade Card
+freeze_subject,10,Freeze Subject
+unfreeze_subject,10,Unfreeze Subject
