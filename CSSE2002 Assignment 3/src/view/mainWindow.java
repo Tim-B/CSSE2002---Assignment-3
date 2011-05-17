@@ -7,31 +7,28 @@ package view;
 import controllers.buttonController;
 import controllers.main;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
-import java.awt.GridLayout;
-import java.awt.Panel;
-import javax.swing.BoxLayout;
 
-import javax.swing.JButton;
+
+
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import models.BadCardException;
+
 import models.Player;
-import models.UserException;
+
 
 import models.impl.Game;
-import models.impl.SubjectCardImpl;
+
 import view.components.ErrorAlert;
 import view.components.GameEnvironmentComponent;
 import view.components.MenuComponent;
-import view.components.PlayerHand;
 
-import view.components.TableComponent;
 
 /**
- *
- * @author Tim
+ * The main GUI window. Starts new rounds and games.
+ * Extends a JFrame Swing element
+ * 
  */
 public abstract class mainWindow extends JFrame{
     

@@ -22,7 +22,7 @@ import view.components.PlayerHand;
 import view.components.ShufflePopup;
 
 /**
- *
+ * The model for the game. Loads the deck and adds players to the game.
  * @author Tim
  */
 public class Game{

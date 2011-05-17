@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 
 
 /**
- *
- * @author Tim
+ * Controller for all buttons. Implements a ActionListener instance
+ * 
  */
 public class buttonController implements ActionListener{
 

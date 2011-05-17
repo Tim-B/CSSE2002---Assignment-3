@@ -10,8 +10,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 /**
- *
- * @author Tim
+ * Controller for all menu components. Implements ActionListener instance
+ * 
  */
 public class menuController implements ActionListener{
 

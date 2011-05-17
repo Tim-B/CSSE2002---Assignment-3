@@ -17,8 +17,8 @@ import view.components.HandCard;
 import view.components.TableCard;
 
 /**
- *
- * @author Tim
+ * Controller for the TableCard object. Extends from cardController
+ * 
  */
 public class TableCardController extends CardController{
 

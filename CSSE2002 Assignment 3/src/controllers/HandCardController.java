@@ -16,8 +16,8 @@ import view.components.ErrorAlert;
 import view.components.HandCard;
 
 /**
- *
- * @author Tim
+ * Controller for the HandCard object. Extended from cardController
+ * 
  */
 public class HandCardController extends CardController{
     
