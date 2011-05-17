@@ -23,6 +23,9 @@ public class PlayerHand extends JScrollPane{
     
     JPanel handPanel = new JPanel();
     
+    /**
+     * The constructor for PlayerHand
+     */
     public PlayerHand(){
         
         handPanel.setLayout(new BoxLayout(handPanel, BoxLayout.X_AXIS));
@@ -37,6 +40,9 @@ public class PlayerHand extends JScrollPane{
         
     }
     
+    /**
+     * Reloads the hand in the gui
+     */
     public void rebuildHand(){
         
         Iterator<Card> handIterator = main.app.getGame().getGUIPlayer().getCardsInHandIterator();

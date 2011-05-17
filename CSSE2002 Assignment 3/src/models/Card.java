@@ -15,7 +15,9 @@ public interface Card {
 	
 	/**
 	 * Returns the name of the card.
-	 */
+         * 
+         * @return returns the name of the card
+         */
 	public String toString();
 	
 	/**
@@ -23,7 +25,9 @@ public interface Card {
 	 * consist of two lines, with the first line containing the cards name 
 	 * in italics and the second line containing the card's ID.  Note that 
 	 * all text should be centered.
-	 */
+         * 
+         * @return
+         */
 	public String toHtmlString();
 	
 	/**
@@ -52,7 +56,10 @@ public interface Card {
 	 * Two cards are equal if they have the same id.  Refer to
 	 * {@link Object#equals(Object)} for the full contract for 
 	 * equals.
-	 */
+         * 
+         * @param other 
+         * @return 
+         */
 	@Override
 	public boolean equals(Object other);
 }

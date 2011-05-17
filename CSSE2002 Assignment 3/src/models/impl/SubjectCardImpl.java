@@ -35,7 +35,13 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
 		isGraded = false;
 	}
 
-	public SubjectCardImpl(String name, int id) throws BadCardException {
+        /**
+         * 
+         * @param name
+         * @param id
+         * @throws BadCardException
+         */
+        public SubjectCardImpl(String name, int id) throws BadCardException {
 		super(name, id);
 		cardFrozenBy = null;
 		isGraded = false;
@@ -101,12 +107,20 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
 		return builder.toString();
 	}
 
+        /**
+         * 
+         * @param card
+         */
         public void setGUICard(TableCard card){
             
             guiCard = card;
             
         }
         
+        /**
+         * 
+         * @return
+         */
         public TableCard getGUICard(){
             
             return guiCard;

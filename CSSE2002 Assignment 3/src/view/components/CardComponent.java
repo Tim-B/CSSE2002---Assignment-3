@@ -21,6 +21,10 @@ public abstract class CardComponent extends JButton{
     
     Boolean graded;
     
+    /**
+     * Constructor for the CardComponent
+     * @param card the instance of Card that is stored as a GUI component
+     */
     public CardComponent(Card card){
         
         super();
@@ -33,6 +37,10 @@ public abstract class CardComponent extends JButton{
         
     }
     
+    /**
+     * Sets the card as a GUI component
+     * @param card the card to be set as a GUI component
+     */
     public void setCard(Card card){
         
         this.card = card;
@@ -49,12 +57,19 @@ public abstract class CardComponent extends JButton{
         
     }
     
+    /**
+     * Returns the card this instance of CardComponent is based on
+     * @return returns the instance of Card that is being used as a GUI component
+     */
     public Card getCard(){
         
         return card;
         
     }
     
+    /**
+     * Updates the details of a instance of CardComponent
+     */
     public void update(){
         
         setDetails();

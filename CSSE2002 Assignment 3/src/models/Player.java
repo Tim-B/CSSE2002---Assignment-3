@@ -52,15 +52,38 @@ public interface Player {
 	 */
 	public Iterator<SubjectCard> getCardsInPlayIterator();
         
+        /**
+         * 
+         * @return
+         */
         public String getPlayerName();
         
+        /**
+         * 
+         * @param name
+         */
         public void setPlayerName(String name);
         
+        /**
+         * 
+         * @param table
+         */
         public void setPlayerTable(CardTable table);
         
+        /**
+         * 
+         * @return
+         */
         public CardTable getPlayerTable();
         
+        /**
+         * 
+         */
         public void incGrade();
         
+        /**
+         * 
+         * @return
+         */
         public boolean wonGame();
 }

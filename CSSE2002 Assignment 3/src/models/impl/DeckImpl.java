@@ -42,7 +42,11 @@ public class DeckImpl implements Deck {
 		fullSize = cards.size();
 	}
 	
-	public void addCard(Card card) {
+        /**
+         * 
+         * @param card
+         */
+        public void addCard(Card card) {
 		cards.add(card);
 	}
 	

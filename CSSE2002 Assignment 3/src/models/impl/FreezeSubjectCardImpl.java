@@ -11,13 +11,26 @@ public class FreezeSubjectCardImpl extends CardImpl implements FreezeSubjectCard
 	/** Type of this FreezeSubjectCard */
 	private FreezeSubjectCardType type;
 
-	public FreezeSubjectCardImpl(String name, int id, 
+        /**
+         * 
+         * @param name
+         * @param id
+         * @param type
+         * @throws BadCardException
+         */
+        public FreezeSubjectCardImpl(String name, int id, 
 			FreezeSubjectCardType type) throws BadCardException {
 		super(name, id);
 		this.type = type;
 	}
 
-	public FreezeSubjectCardImpl(String name, FreezeSubjectCardType type) 
+        /**
+         * 
+         * @param name
+         * @param type
+         * @throws BadCardException
+         */
+        public FreezeSubjectCardImpl(String name, FreezeSubjectCardType type) 
 	        throws BadCardException {
 		super(name);
 		this.type = type;

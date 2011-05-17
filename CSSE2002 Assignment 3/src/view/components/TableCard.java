@@ -16,6 +16,11 @@ public class TableCard extends CardComponent{
     
     private CardTable table;
     
+    /**
+     * The private constructor for TableCard
+     * @param card the card to be stored
+     * @param table the table to be stored 
+     */
     public TableCard(Card card, CardTable table){
         
         super(card);
@@ -26,6 +31,10 @@ public class TableCard extends CardComponent{
         
     }
     
+    /**
+     * Returns the table for this instance of the game
+     * @return the CardTable instance that represents this instance of the game
+     */
     public CardTable getTable(){
         
         return table;
@@ -54,6 +63,9 @@ public class TableCard extends CardComponent{
         
     }
     
+    /**
+     * Updates the TableCard instance
+     */
     public void update(){
         
         setDetails();

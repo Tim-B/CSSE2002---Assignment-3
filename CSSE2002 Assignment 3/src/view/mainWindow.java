@@ -35,12 +35,21 @@ import view.components.TableComponent;
  */
 public abstract class mainWindow extends JFrame{
     
+    /**
+     * 
+     */
     protected buttonController uiController = new buttonController();
     
+    /**
+     * 
+     */
     protected Game game;
     
     JPanel mainPanel;
       
+    /**
+     * The main function of the GUI
+     */
     public mainWindow(){
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,6 +74,10 @@ public abstract class mainWindow extends JFrame{
         
     }
     
+    /**
+     * Gets the current game
+     * @return the instance of Game that is the current game
+     */
     public Game getGame(){
         
         return game;
@@ -72,6 +85,9 @@ public abstract class mainWindow extends JFrame{
     }
 
     
+    /**
+     * Initializes a new game
+     */
     public void newGame(){
          
         game = new Game();
@@ -88,6 +104,9 @@ public abstract class mainWindow extends JFrame{
         
      }
     
+    /**
+     * Ends the current game
+     */
     public void endGame(){
         
         game = null;
@@ -102,6 +121,9 @@ public abstract class mainWindow extends JFrame{
         
     }
     
+    /**
+     * Starts a new round of the current game
+     */
     public void newRound(){
         
         try {
@@ -130,6 +152,9 @@ public abstract class mainWindow extends JFrame{
         
     }
     
+    /**
+     * Updates the entire GUI
+     */
     public void updateUI(){
 
         validate();

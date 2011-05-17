@@ -14,6 +14,9 @@ import javax.swing.JMenuItem;
  */
 public class MenuComponent extends JMenuBar{
     
+    /**
+     * The constructor for MenuComponent
+     */
     public MenuComponent(){
         
         super();

@@ -25,13 +25,22 @@ public abstract class AbstractPlayer implements Player {
 	/** The player's opponents. */
 	protected ArrayList<Player> opponents; 
         
+        /**
+         * 
+         */
         protected String playerName;
 	
 	/** The deck of cards. */
 	protected Deck deck; 
         
+        /**
+         * 
+         */
         protected CardTable table;
         
+        /**
+         * 
+         */
         protected int numGraded = 0;
 	
 	public void addOpponent(Player p) {
@@ -66,35 +75,59 @@ public abstract class AbstractPlayer implements Player {
 		return inPlay.iterator();
 	}
         
+        /**
+         * 
+         * @return
+         */
         public int getHandSize(){
             
             return hand.size();
             
         }
         
+        /**
+         * 
+         * @param name
+         */
         public void setPlayerName(String name){
             
             playerName = name;
             
         }
         
+        /**
+         * 
+         * @return
+         */
         public String getPlayerName(){
             
             return playerName;
             
         }
         
+        /**
+         * 
+         * @param table
+         */
         public void setPlayerTable(CardTable table){
             
             this.table = table;
         }
         
+        /**
+         * 
+         * @return
+         */
         public CardTable getPlayerTable(){
             
             return table;
             
         }
         
+        /**
+         * 
+         * @return
+         */
         public boolean wonGame(){
             
             if(numGraded >= 4){
@@ -109,6 +142,9 @@ public abstract class AbstractPlayer implements Player {
             
         }
         
+        /**
+         * 
+         */
         public void incGrade(){
             
             numGraded++;

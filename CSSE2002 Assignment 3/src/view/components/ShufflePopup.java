@@ -13,6 +13,10 @@ import javax.swing.JOptionPane;
  */
 public class ShufflePopup {
     
+    /**
+     * The constructor for ShufflePopup
+     * @return a boolean value for shuffling the deck
+     */
     public static Boolean ShufflePopup(){
     
         int result = new JOptionPane().showConfirmDialog(main.app, 

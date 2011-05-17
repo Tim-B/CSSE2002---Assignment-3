@@ -6,11 +6,20 @@ package models;
  */
 public class BadCardException extends StudentsLifeException {
 
-	public BadCardException(String message) {
+    /**
+     * 
+     * @param message:
+     */
+    public BadCardException(String message) {
 		super(message);
 	}
 
-	public BadCardException(String message, Throwable ex) {
+        /**
+         * 
+         * @param message
+         * @param ex
+         */
+        public BadCardException(String message, Throwable ex) {
 		super(message, ex);
 	}
 }

@@ -6,11 +6,20 @@ package models;
  */
 public class BadDeckOperationException extends StudentsLifeException {
 
-	public BadDeckOperationException(String message) {
+    /**
+     * 
+     * @param message
+     */
+    public BadDeckOperationException(String message) {
 		super(message);
 	}
 
-	public BadDeckOperationException(String message, Throwable ex) {
+        /**
+         * 
+         * @param message
+         * @param ex
+         */
+        public BadDeckOperationException(String message, Throwable ex) {
 		super(message, ex);
 	}
 }

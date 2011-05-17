@@ -4,11 +4,20 @@ package models;
  */
 public class UserException extends StudentsLifeException {
 
-	public UserException(String message) {
+    /**
+     * 
+     * @param message
+     */
+    public UserException(String message) {
 		super(message);
 	}
 
-	public UserException(String message, Throwable ex) {
+        /**
+         * 
+         * @param message
+         * @param ex
+         */
+        public UserException(String message, Throwable ex) {
 		super(message, ex);
 	}
 }

@@ -10,13 +10,26 @@ public class BonusCardImpl extends CardImpl implements BonusCard {
 	
 	private BonusCardType type;
 
-	public BonusCardImpl(String name, int id, BonusCard.BonusCardType type) 
+        /**
+         * 
+         * @param name
+         * @param id
+         * @param type
+         * @throws BadCardException
+         */
+        public BonusCardImpl(String name, int id, BonusCard.BonusCardType type) 
 	throws BadCardException {
 		super(name, id);
 		this.type = type;
 	}
 	
-	public BonusCardImpl(String name, BonusCard.BonusCardType type) 
+        /**
+         * 
+         * @param name
+         * @param type
+         * @throws BadCardException
+         */
+        public BonusCardImpl(String name, BonusCard.BonusCardType type) 
 	throws BadCardException {
 		super(name);
 		this.type = type;

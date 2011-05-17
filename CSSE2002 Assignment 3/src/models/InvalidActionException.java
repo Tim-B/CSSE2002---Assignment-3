@@ -5,11 +5,20 @@ package models;
  */
 public class InvalidActionException extends RuntimeException {
 
-	public InvalidActionException(String message) {
+    /**
+     * 
+     * @param message
+     */
+    public InvalidActionException(String message) {
 		super(message);
 	}
 
-	public InvalidActionException(String message, Throwable cause) {
+        /**
+         * 
+         * @param message
+         * @param cause
+         */
+        public InvalidActionException(String message, Throwable cause) {
 		super(message, cause);
 	}
 }

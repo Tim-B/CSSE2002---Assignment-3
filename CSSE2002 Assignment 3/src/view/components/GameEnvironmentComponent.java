@@ -17,6 +17,10 @@ import models.impl.Game;
  */
 public class GameEnvironmentComponent extends JPanel{
     
+    /**
+     * The constructor for the GameEnvironmentComponent
+     * @param game the instance of game to be used in this gui element
+     */
     public GameEnvironmentComponent(Game game){
         
         setLayout(new GridBagLayout());

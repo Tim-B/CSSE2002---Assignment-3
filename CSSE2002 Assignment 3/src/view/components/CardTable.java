@@ -27,6 +27,10 @@ public class CardTable extends JScrollPane{
     
     private Player player;
     
+    /**
+     * Constructor for the CardTable class
+     * @param player the main player for this instance of the game
+     */
     public CardTable(Player player){
         
         super();
@@ -41,6 +45,10 @@ public class CardTable extends JScrollPane{
         
     }
     
+    /**
+     * Puts a card on the table
+     * @param card the instance of Card that is being added to the table
+     */
     public void putCardOnTable(SubjectCard card){
         
         TableCard tableCard = new TableCard(card, this);
@@ -53,6 +61,10 @@ public class CardTable extends JScrollPane{
         
     }
     
+    /**
+     * Returns the player for this instance of the game
+     * @return the main player for this instance of the game
+     */
     public Player getPlayer(){
         
         return player;

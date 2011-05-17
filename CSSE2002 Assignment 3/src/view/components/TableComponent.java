@@ -18,6 +18,10 @@ import models.impl.SubjectCardImpl;
  */
 public class TableComponent extends JPanel{
     
+    /**
+     * The constructor for TableComponent
+     * @param game the game to be stored in TableComponent
+     */
     public TableComponent(Game game){
         
         super();

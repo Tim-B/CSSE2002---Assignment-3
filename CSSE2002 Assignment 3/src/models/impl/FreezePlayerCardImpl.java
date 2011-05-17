@@ -8,11 +8,22 @@ import models.FreezePlayerCard;
  */
 public class FreezePlayerCardImpl extends CardImpl implements FreezePlayerCard {
 
-	public FreezePlayerCardImpl(String name, int id) throws BadCardException {
+    /**
+     * 
+     * @param name
+     * @param id
+     * @throws BadCardException
+     */
+    public FreezePlayerCardImpl(String name, int id) throws BadCardException {
 		super(name, id);
 	}
 
-	public FreezePlayerCardImpl(String name) throws BadCardException {
+        /**
+         * 
+         * @param name
+         * @throws BadCardException
+         */
+        public FreezePlayerCardImpl(String name) throws BadCardException {
 		super(name);
 	}
 

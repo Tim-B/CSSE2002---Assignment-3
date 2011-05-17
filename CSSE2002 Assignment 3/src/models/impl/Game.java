@@ -37,6 +37,9 @@ public class Game{
     
     private PlayerHand hand;
     
+    /**
+     * Main function of the game
+     */
     public Game(){
         
         File deckFile = new File("C:/cssetxt/test4.txt");
@@ -97,12 +100,20 @@ public class Game{
         
     }
     
+    /**
+     * Returns all players
+     * @return a ArrayList of Player objects representing allPlayers
+     */
     public ArrayList<Player> allPlayers(){
         
         return allPlayers;
         
     }
     
+    /**
+     * Returns all virtual players
+     * @return a ArrayList of Player objects representing vPlayers
+     */
     public ArrayList<VirtualPlayer> vPlayers(){
         
         return vPlayers;
@@ -123,24 +134,41 @@ public class Game{
         
     }
     
+    /**
+     * Returns the main player
+     * @return returns the instance of GUIPlayer object for the game
+     */
     public GUIPlayer getGUIPlayer(){
         
         return player;
         
     }
     
+    /**
+     * Returns the number of players in the game
+     * @return the integer value of the size of allPlayers for the game
+     */
     public int getNumberPlayers(){
         
         return allPlayers.size();
         
     }
     
+    /**
+     * Returns the players hand
+     * @return the instance of PlayerHand that is the players hand
+     */
     public PlayerHand getHand(){
         
         return hand;
         
     }
     
+    /**
+     * Sets the hand of the player
+     * @param hand hand is the instance of PlayerHand that is being set to the
+     * users hand
+     */
     public void setHand(PlayerHand hand){
         
         this.hand = hand;

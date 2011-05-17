@@ -27,8 +27,7 @@ public interface SubjectCard extends Card {
 	 * track of the card that is afflicting it. A card may only be frozen
 	 * by one other card at a time.
 	 * 
-	 * @throws InvalidMoveException if the card is already frozen or graded
-	 * 
+         * @throws InvalidActionException 
 	 * @param card	the card to be set afflicting
 	 */
 	public void freezeWith(FreezeSubjectCard card) throws InvalidActionException;
@@ -37,8 +36,8 @@ public interface SubjectCard extends Card {
 	 * Sets this card to be graded. A card is graded once a grade card is 
 	 * placed onto it.
 	 * 
-	 * @throws InvalidMoveException if the card has already been graded or
-	 * it is frozen
+         * @param card
+         * @throws InvalidActionException  
 	 */
 	public void gradeWith(FreezeSubjectCard card) throws InvalidActionException;
 	
@@ -46,8 +45,7 @@ public interface SubjectCard extends Card {
 	 * Sets this card to be unfrozen. Once a card is unfrozen, any
 	 * afflictions are removed.
 	 * 
-	 * @throws InvalidMoveException if the card is not already frozen
-	 * or it is graded 
+         * @throws InvalidActionException 
 	 */
 	public void unfreeze() throws InvalidActionException;
 
@@ -65,8 +63,16 @@ public interface SubjectCard extends Card {
 	 */
 	public boolean isGraded();
         
+        /**
+         * 
+         * @param card
+         */
         public void setGUICard(TableCard card);
         
+        /**
+         * 
+         * @return
+         */
         public TableCard getGUICard();
 	
 }

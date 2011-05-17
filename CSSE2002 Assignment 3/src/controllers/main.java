@@ -12,9 +12,16 @@ import view.mainWindow;
  */
 public class main extends mainWindow{
     
+    /**
+     * 
+     */
     public static main app;
     
-     public static void main(String[] a){
+    /**
+     * 
+     * @param a initializes the program
+     */
+    public static void main(String[] a){
          
          app = new main();
 

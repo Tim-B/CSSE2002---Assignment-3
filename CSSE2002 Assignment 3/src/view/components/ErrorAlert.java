@@ -14,6 +14,10 @@ import javax.swing.JOptionPane;
  */
 public class ErrorAlert {
     
+    /**
+     * Displays an error message
+     * @param message the string message to be displayed
+     */
     public ErrorAlert(String message){
             
         JOptionPane.showMessageDialog(main.app, message);
