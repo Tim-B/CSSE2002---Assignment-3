@@ -48,6 +48,8 @@ public class TableCardController extends CardController{
             
             new ErrorAlert(ex.toString());
             
+            //main.app.getGame().setSelected(null);
+            
         }
             
     }

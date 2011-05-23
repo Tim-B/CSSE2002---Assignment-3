@@ -140,6 +140,8 @@ public abstract class mainWindow extends JFrame{
         
         try {
                          
+            game.setSelected(null);
+            
             for(Player currentPlayer : game.allPlayers()){
                 
                 currentPlayer.play();
@@ -156,11 +158,11 @@ public abstract class mainWindow extends JFrame{
             
             }
             
-            game.setSelected(null);
-            
         } catch (Exception ex) {
             
             new ErrorAlert(ex.toString());
+            
+            game.getHand().setSelected(null);
             
         }
         

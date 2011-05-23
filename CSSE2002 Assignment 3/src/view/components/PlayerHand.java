@@ -54,11 +54,17 @@ public class PlayerHand extends JScrollPane{
                 
         }
         
-        selected.setBackground(Color.LIGHT_GRAY);
+        if(!(selected == null)){
+            
+            selected.setBackground(Color.LIGHT_GRAY);
+            
+        }
+            
         
         this.selected = selected;
         
     }
+
     
     /**
      * Reloads the hand in the gui
