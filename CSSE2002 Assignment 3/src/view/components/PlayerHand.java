@@ -5,6 +5,7 @@
 package view.components;
 
 import controllers.main;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Iterator;
 import javax.swing.BoxLayout;
@@ -20,6 +21,11 @@ public class PlayerHand extends JScrollPane{
     JPanel handPanel = new JPanel();
     
     /**
+     * The currently selected card
+     */
+    CardComponent selected;
+    
+    /**
      * The constructor for PlayerHand
      */
     public PlayerHand(){
@@ -33,6 +39,24 @@ public class PlayerHand extends JScrollPane{
         setMinimumSize(new Dimension(800,80));
         
         rebuildHand();
+        
+    }
+    
+    /**
+     * Highlights the selected card in the hand
+     * @param selected the card which is selected
+     */
+    public void setSelected(CardComponent selected){
+        
+        if(!(this.selected == null)){
+            
+                this.selected.setBackground(null);
+                
+        }
+        
+        selected.setBackground(Color.LIGHT_GRAY);
+        
+        this.selected = selected;
         
     }
     

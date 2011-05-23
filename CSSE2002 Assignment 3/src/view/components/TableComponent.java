@@ -1,9 +1,11 @@
 package view.components;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import models.Player;
+import models.SubjectCard;
 import models.impl.Game;
 /**
  * The GUI component TableComponent which extends Jpanel and sets the 
@@ -11,6 +13,7 @@ import models.impl.Game;
  * 
  */
 public class TableComponent extends JPanel{
+
     
     /**
      * The constructor for TableComponent

@@ -1,11 +1,13 @@
 package models.impl;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import models.BadFormatException;
 import models.Deck;
 import models.Player;
+import view.components.CardComponent;
 import view.components.ErrorAlert;
 import view.components.PlayerHand;
 
@@ -25,7 +27,12 @@ public class Game{
     
     private Deck deck;
     
-    private PlayerHand hand;
+    private PlayerHand hand;  
+        
+    /**
+     * The currently selected card
+     */
+    private CardComponent selected;
     
     /**
      * Main function of the game
@@ -160,6 +167,30 @@ public class Game{
     public void setHand(PlayerHand hand){
         
         this.hand = hand;
+        
+    }
+    
+        
+        
+     /**
+     * Highlights the selected card in the hand
+     * @param selected the card which is selected
+     */
+    public void setSelected(CardComponent selected){
+        
+        if(!(this.selected == null)){
+            
+                this.selected.setBackground(null);
+                
+        }
+        
+        if(!(selected == null)){
+            
+            selected.setBackground(Color.LIGHT_GRAY);
+            
+        }
+        
+        this.selected = selected;
         
     }
      

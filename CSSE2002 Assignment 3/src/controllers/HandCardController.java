@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import models.Card;
@@ -28,6 +29,8 @@ public class HandCardController extends CardController{
             Card card = cardComponent.getCard();
             
             GUIPlayer player = main.app.getGame().getGUIPlayer();
+            
+            main.app.getGame().getHand().setSelected(cardComponent);
             
             player.setCardToPlay(card);
 

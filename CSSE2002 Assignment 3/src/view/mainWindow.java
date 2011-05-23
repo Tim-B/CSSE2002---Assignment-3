@@ -156,6 +156,8 @@ public abstract class mainWindow extends JFrame{
             
             }
             
+            game.setSelected(null);
+            
         } catch (Exception ex) {
             
             new ErrorAlert(ex.toString());

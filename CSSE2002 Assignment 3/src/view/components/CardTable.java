@@ -1,6 +1,7 @@
 package view.components;
 
 import controllers.main;
+import java.awt.Color;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,6 +19,11 @@ public class CardTable extends JScrollPane{
     private JPanel panel = new JPanel();
     
     private Player player;
+    
+    /**
+     * The current selected
+     */
+    private CardComponent selected;
     
     /**
      * Constructor for the CardTable class

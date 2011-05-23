@@ -41,6 +41,8 @@ public class TableCardController extends CardController{
                 player.setCardToFreeze(card);
 
             }
+            
+            main.app.getGame().setSelected(cardComponent);
         
         } catch (UserException ex) {
             
