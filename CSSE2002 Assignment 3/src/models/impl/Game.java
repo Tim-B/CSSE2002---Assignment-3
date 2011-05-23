@@ -1,22 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package models.impl;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import models.BadFormatException;
 import models.Deck;
 import models.Player;
-import models.UserException;
 import view.components.ErrorAlert;
-
-import models.Card;
 import view.components.PlayerHand;
 
 import view.components.ShufflePopup;
@@ -40,9 +30,7 @@ public class Game{
     /**
      * Main function of the game
      */
-    public Game(){
-        
-        File deckFile = new File("C:/cssetxt/test4.txt");
+    public Game(File deckFile){
         
         try {
             

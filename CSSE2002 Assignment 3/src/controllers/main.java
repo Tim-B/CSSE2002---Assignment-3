@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import javax.swing.JFileChooser;
 import models.impl.Game;
 import view.mainWindow;
 
@@ -13,7 +14,7 @@ import view.mainWindow;
 public class main extends mainWindow{
     
     /**
-     * 
+     * The top of the application class hierarchy
      */
     public static main app;
     

@@ -73,5 +73,10 @@ public class CardImplTest {
         public CardImplImpl() throws Exception {
             super("");
         }
+
+        @Override
+        public int getScore() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
     }
 }

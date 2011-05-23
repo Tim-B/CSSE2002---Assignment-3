@@ -7,6 +7,8 @@ package view;
 import controllers.buttonController;
 import controllers.main;
 import java.awt.BorderLayout;
+import java.io.File;
+import javax.swing.JFileChooser;
 
 
 
@@ -33,16 +35,21 @@ import view.components.MenuComponent;
 public abstract class mainWindow extends JFrame{
     
     /**
-     * 
+     * Sets the button controller to the buttonController class
      */
     protected buttonController uiController = new buttonController();
     
     /**
-     * 
+     * The instance of the current game
      */
     protected Game game;
     
-    JPanel mainPanel;
+    /**
+     * The instance of the main content panel
+     */
+    private JPanel mainPanel;
+    
+    private final JFileChooser fileChooser = new JFileChooser();
       
     /**
      * The main function of the GUI
@@ -52,8 +59,6 @@ public abstract class mainWindow extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         setResizable(false); 
-  
-        //setSize(800,600);
         
         setJMenuBar(new MenuComponent());
         
@@ -63,7 +68,7 @@ public abstract class mainWindow extends JFrame{
         
         mainPanel.setLayout(new BorderLayout());
         
-        //mainPanel.setSize(800,600);
+       final JFileChooser fc = new JFileChooser();
         
         add(mainPanel);
         
@@ -87,17 +92,27 @@ public abstract class mainWindow extends JFrame{
      */
     public void newGame(){
          
-        game = new Game();
+        int returnVal = fileChooser.showOpenDialog(mainPanel);
         
-        mainPanel.removeAll();
+        try{
         
-        mainPanel.add(new GameEnvironmentComponent(game));
-        
-        mainPanel.revalidate();
-        
-        mainPanel.repaint();
+            File file = fileChooser.getSelectedFile();
 
-        updateUI();
+            game = new Game(file);
+
+            mainPanel.removeAll();
+
+            mainPanel.add(new GameEnvironmentComponent(game));
+
+            mainPanel.revalidate();
+
+            mainPanel.repaint();
+
+            updateUI();
+            
+        }catch(Exception exep){
+            
+        }
         
      }
     
