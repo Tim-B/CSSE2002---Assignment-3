@@ -1,16 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.components;
 
 import controllers.main;
-import java.awt.Frame;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Tim
+ *Represents the error message display to be displayed.
  */
 public class ErrorAlert {
     

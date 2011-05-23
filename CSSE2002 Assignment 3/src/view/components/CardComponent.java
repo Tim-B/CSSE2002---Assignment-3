@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.components;
 
 import javax.swing.JButton;
@@ -10,8 +6,7 @@ import java.awt.Dimension;
 import models.SubjectCard;
 
 /**
- *
- * @author Tim
+ *The abstract class CardComponent which extends Jbutton. 
  */
 public abstract class CardComponent extends JButton{
     

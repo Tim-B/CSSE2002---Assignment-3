@@ -1,20 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.components;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
-import models.BadCardException;
 import models.Player;
 import models.impl.Game;
-import models.impl.SubjectCardImpl;
-
 /**
- *
- * @author Tim
+ * The GUI component TableComponent which extends Jpanel and sets the 
+ * dimensions for the game.
+ * 
  */
 public class TableComponent extends JPanel{
     

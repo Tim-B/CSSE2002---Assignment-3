@@ -1,15 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.components;
 
 import controllers.buttonController;
 import javax.swing.JButton;
 
 /**
- *
- * @author Tim
+ *The GUI Component class extending from Jbutton for buttons from the GUI
+ * which call the buttonController().
  */
 public class ButtonComponent extends JButton{
     
