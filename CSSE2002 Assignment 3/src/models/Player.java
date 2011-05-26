@@ -37,6 +37,7 @@ public interface Player {
 	 
 	 /** Pick up a card from the deck, if any, and place it in the
 	  *  player's hand.
+          *  @return returns whether the a card could be picked up off the deck.
 	  */
 	 public void pickUp();
 	 
@@ -86,4 +87,10 @@ public interface Player {
          * @return
          */
         public boolean wonGame();
+        
+        /**
+         * Returns whether a player can play
+         * @return Whether a player can play.
+         */
+        public boolean canMove();
 }

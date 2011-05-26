@@ -25,6 +25,7 @@ import models.impl.Game;
 import view.components.ErrorAlert;
 import view.components.GameEnvironmentComponent;
 import view.components.MenuComponent;
+import view.components.SplashScreen;
 
 
 /**
@@ -64,15 +65,19 @@ public abstract class mainWindow extends JFrame{
         
         setVisible(true);
         
+        setSize(800, 456);
+        
+        setLocationRelativeTo(null);
+        
         mainPanel = new JPanel();
         
         mainPanel.setLayout(new BorderLayout());
         
-       final JFileChooser fc = new JFileChooser();
+        final JFileChooser fc = new JFileChooser();
+        
+        mainPanel.add(new SplashScreen());
         
         add(mainPanel);
-        
-        pack();
         
     }
     
@@ -96,19 +101,24 @@ public abstract class mainWindow extends JFrame{
         
         try{
         
-            File file = fileChooser.getSelectedFile();
+            if(returnVal == JFileChooser.APPROVE_OPTION){
+                
+                File file = fileChooser.getSelectedFile();
 
-            game = new Game(file);
+                game = new Game(file);
 
-            mainPanel.removeAll();
+                mainPanel.removeAll();
 
-            mainPanel.add(new GameEnvironmentComponent(game));
+                mainPanel.add(new GameEnvironmentComponent(game));
 
-            mainPanel.revalidate();
+                mainPanel.revalidate();
 
-            mainPanel.repaint();
+                mainPanel.repaint();
 
-            updateUI();
+                updateUI();
+                
+                System.out.println(mainPanel.getSize());
+            }
             
         }catch(Exception exep){
             
@@ -119,7 +129,9 @@ public abstract class mainWindow extends JFrame{
     /**
      * Ends the current game
      */
-    public void endGame(){
+    public void endGame(String message){
+        
+        new ErrorAlert(message);
         
         game = null;
         
@@ -142,25 +154,35 @@ public abstract class mainWindow extends JFrame{
                          
             game.setSelected(null);
             
+            int noMoves = 0;
+            
             for(Player currentPlayer : game.allPlayers()){
                 
                 currentPlayer.play();
                 
                 if(currentPlayer.wonGame()){
                     
-                    new ErrorAlert("Game won by: " + currentPlayer.getPlayerName());
+                    main.app.endGame("Game won by: " + currentPlayer.getPlayerName());
                     
-                    main.app.endGame();
+                    return;
                     
-                    break;
+                }else if(!currentPlayer.canMove()){
+                    
+                    noMoves++;
                     
                 }
             
             }
             
+            if(noMoves == game.allPlayers().size()){
+                
+                main.app.endGame("Game is a draw");
+                
+            }
+            
         } catch (Exception ex) {
             
-            new ErrorAlert(ex.toString());
+            new ErrorAlert(ex.getMessage());
             
             game.getHand().setSelected(null);
             

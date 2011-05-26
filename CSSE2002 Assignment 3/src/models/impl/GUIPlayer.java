@@ -140,7 +140,9 @@ public class GUIPlayer extends AbstractPlayer {
                         getPlayerTable().putCardOnTable((SubjectCard)cardToPlay);
 		}
 		if (cardToPlay == null) {
+                    
 			pickUp();
+                        
 		}
                 
 		hand.remove(cardToPlay);

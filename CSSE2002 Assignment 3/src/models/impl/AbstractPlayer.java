@@ -42,6 +42,11 @@ public abstract class AbstractPlayer implements Player {
          * 
          */
         protected int numGraded = 0;
+        
+        /**
+         * Stores whether the player was able to make a move
+         */
+        private boolean canMove = true;
 	
 	public void addOpponent(Player p) {
 		opponents.add(p);
@@ -63,8 +68,19 @@ public abstract class AbstractPlayer implements Player {
 	}
 	
 	public void pickUp() {
-		Card c = deck.pickUp();  // the next card from the deck
-		receiveCard(c);
+            
+            if((deck.size() == 0) && (hand.size() == 0)){
+
+                canMove = false;
+                
+            }else{
+            
+                Card c = deck.pickUp();  // the next card from the deck
+                
+                receiveCard(c);
+                
+            }
+            
 	}
 	
 	public Iterator<Card> getCardsInHandIterator() {
@@ -148,6 +164,16 @@ public abstract class AbstractPlayer implements Player {
         public void incGrade(){
             
             numGraded++;
+            
+        }
+        
+        /**
+         * Returns whether a player can move
+         * @return whether a player can move.
+         */
+        public boolean canMove(){
+            
+            return canMove;
             
         }
 }
