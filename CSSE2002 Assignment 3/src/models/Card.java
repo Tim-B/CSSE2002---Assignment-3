@@ -18,7 +18,7 @@ public interface Card {
          * 
          * @return returns the name of the card
          */
-	public String toString();
+	
 	
 	/**
 	 * Gets the card in a HTML formatted string. When displayed, HTML should 
