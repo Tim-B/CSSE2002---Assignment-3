@@ -1,19 +1,11 @@
-
-/*
-* To change this template, choose Tools | Templates
-* and open the template in the editor.
- */
 package view;
 
 //~--- non-JDK imports --------------------------------------------------------
 
 import controllers.buttonController;
 import controllers.main;
-
 import models.Player;
-
 import models.impl.Game;
-
 import view.components.ErrorAlert;
 import view.components.GameEnvironmentComponent;
 import view.components.MenuComponent;
@@ -22,9 +14,7 @@ import view.components.SplashScreen;
 //~--- JDK imports ------------------------------------------------------------
 
 import java.awt.BorderLayout;
-
 import java.io.File;
-
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -41,6 +31,11 @@ public abstract class mainWindow extends JFrame {
      */
     protected buttonController uiController = new buttonController();
     private final JFileChooser fileChooser  = new JFileChooser();
+    
+    /**
+     * The singleton instance of the application.
+     */
+    private mainWindow instance;
 
     /**
      * The instance of the current game
@@ -55,7 +50,7 @@ public abstract class mainWindow extends JFrame {
     /**
      * The main function of the GUI
      */
-    public mainWindow() {
+    private mainWindow() {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

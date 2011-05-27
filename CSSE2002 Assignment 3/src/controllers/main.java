@@ -6,14 +6,8 @@
 package controllers;
 
 //~--- non-JDK imports --------------------------------------------------------
-
-import models.impl.Game;
-
 import view.mainWindow;
 
-//~--- JDK imports ------------------------------------------------------------
-
-import javax.swing.JFileChooser;
 
 /**
  * The main class
