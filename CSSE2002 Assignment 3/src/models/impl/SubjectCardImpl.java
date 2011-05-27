@@ -2,15 +2,11 @@ package models.impl;
 
 //~--- non-JDK imports --------------------------------------------------------
 
-import controllers.main;
-
 import models.BadCardException;
 import models.FreezeSubjectCard;
 import models.InvalidActionException;
 import models.Player;
 import models.SubjectCard;
-
-import view.components.ErrorAlert;
 import view.components.TableCard;
 
 /**

@@ -3,12 +3,10 @@ package view.components;
 //~--- non-JDK imports --------------------------------------------------------
 
 import models.Card;
-import models.SubjectCard;
 
 //~--- JDK imports ------------------------------------------------------------
 
 import java.awt.Dimension;
-
 import javax.swing.JButton;
 
 /**

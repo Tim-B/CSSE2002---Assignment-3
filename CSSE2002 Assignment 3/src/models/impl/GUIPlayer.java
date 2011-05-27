@@ -2,8 +2,6 @@ package models.impl;
 
 //~--- non-JDK imports --------------------------------------------------------
 
-import controllers.main;
-
 import models.BonusCard;
 import models.Card;
 import models.Deck;
@@ -12,8 +10,6 @@ import models.Player;
 import models.SubjectCard;
 import models.UserException;
 import view.MainWindow;
-
-import view.components.PlayerHand;
 
 //~--- JDK imports ------------------------------------------------------------
 
