@@ -6,19 +6,26 @@ package models;
 public abstract class StudentsLifeException extends Exception {
 
     /**
-     * 
+     *
      * @param message
      */
     public StudentsLifeException(String message) {
-		super(message);
-	}
-	
+
+        super(message);
+
+    }
+
     /**
-     * 
+     *
      * @param message
      * @param ex
      */
     public StudentsLifeException(String message, Throwable ex) {
-		super(message, ex);
-	}
+
+        super(message, ex);
+
+    }
 }
+
+
+

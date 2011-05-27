@@ -7,19 +7,26 @@ package models;
 public class BadFormatException extends StudentsLifeException {
 
     /**
-     * 
+     *
      * @param message
      */
     public BadFormatException(String message) {
-		super(message);
-	}
+
+        super(message);
+
+    }
 
     /**
-     * 
+     *
      * @param message
      * @param ex
      */
     public BadFormatException(String message, Throwable ex) {
-		super(message, ex);
-	}
+
+        super(message, ex);
+
+    }
 }
+
+
+

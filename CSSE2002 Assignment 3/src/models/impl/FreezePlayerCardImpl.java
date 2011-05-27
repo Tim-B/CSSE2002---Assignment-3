@@ -1,5 +1,7 @@
 package models.impl;
 
+//~--- non-JDK imports --------------------------------------------------------
+
 import models.BadCardException;
 import models.FreezePlayerCard;
 
@@ -9,26 +11,34 @@ import models.FreezePlayerCard;
 public class FreezePlayerCardImpl extends CardImpl implements FreezePlayerCard {
 
     /**
-     * 
+     *
+     * @param name
+     * @throws BadCardException
+     */
+    public FreezePlayerCardImpl(String name) throws BadCardException {
+
+        super(name);
+
+    }
+
+    /**
+     *
      * @param name
      * @param id
      * @throws BadCardException
      */
     public FreezePlayerCardImpl(String name, int id) throws BadCardException {
-		super(name, id);
-	}
 
-        /**
-         * 
-         * @param name
-         * @throws BadCardException
-         */
-        public FreezePlayerCardImpl(String name) throws BadCardException {
-		super(name);
-	}
+        super(name, id);
 
-	public int getScore() {
-		return -2;
-	}
+    }
 
+    public int getScore() {
+
+        return -2;
+
+    }
 }
+
+
+

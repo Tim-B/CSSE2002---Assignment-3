@@ -1,11 +1,15 @@
 package models.impl;
 
+//~--- non-JDK imports --------------------------------------------------------
+
 import controllers.main;
+
 import models.BadCardException;
 import models.FreezeSubjectCard;
 import models.InvalidActionException;
 import models.Player;
 import models.SubjectCard;
+
 import view.components.ErrorAlert;
 import view.components.TableCard;
 
@@ -14,117 +18,164 @@ import view.components.TableCard;
  */
 public class SubjectCardImpl extends CardImpl implements SubjectCard {
 
-	/* the card currently afflicting this one */
-	private FreezeSubjectCard cardFrozenBy;
+    /* the card currently afflicting this one */
+    private FreezeSubjectCard cardFrozenBy;
+    private TableCard         guiCard;
 
-	/* whether or not the card is graded */
-	private boolean isGraded;
-        
-        private TableCard guiCard;
+    /* whether or not the card is graded */
+    private boolean isGraded;
 
-	/**
-	 * Create a subject card in the default initial state; not
-	 * graded and not frozen.  The card will have a new id.
-	 * 
-	 * @param name the 
-	 * @throws BadCardException
-	 */
-	public SubjectCardImpl(String name) throws BadCardException {
-		super(name);
-		cardFrozenBy = null;
-		isGraded = false;
-	}
+    /**
+     * Create a subject card in the default initial state; not
+     * graded and not frozen.  The card will have a new id.
+     *
+     * @param name the
+     * @throws BadCardException
+     */
+    public SubjectCardImpl(String name) throws BadCardException {
 
-        /**
-         * 
-         * @param name
-         * @param id
-         * @throws BadCardException
-         */
-        public SubjectCardImpl(String name, int id) throws BadCardException {
-		super(name, id);
-		cardFrozenBy = null;
-		isGraded = false;
-	}
+        super(name);
 
-	public FreezeSubjectCard getCardFrozenBy() {
-		return cardFrozenBy;
-	}
+        cardFrozenBy = null;
+        isGraded     = false;
 
-	public void freezeWith(FreezeSubjectCard card) throws InvalidActionException {
-		if (isFrozen()) {
-			throw new InvalidActionException("Subject is already frozen");
-		}
-		if (isGraded) {
-			throw new InvalidActionException("Subject is graded.");
-		}
-		cardFrozenBy = card;
-	}
+    }
 
-	public void gradeWith(FreezeSubjectCard card) throws InvalidActionException {
-		if (isFrozen()) {
-			throw new InvalidActionException("Subject is frozen");
-		}
-		if (isGraded) {
-			throw new InvalidActionException("Subject is already graded.");
-		}
-		cardFrozenBy = card;
-		isGraded = true;
-                
-                Player player = getGUICard().getTable().getPlayer();
-                
-                player.incGrade();
-                
-	}
+    /**
+     *
+     * @param name
+     * @param id
+     * @throws BadCardException
+     */
+    public SubjectCardImpl(String name, int id) throws BadCardException {
 
-	public void unfreeze() throws InvalidActionException {
-		if (!isFrozen() || isGraded)
-			throw new InvalidActionException("Subject is not already frozen.");
-		cardFrozenBy = null;
-	}
+        super(name, id);
 
-	public boolean isFrozen() {
-		return (cardFrozenBy != null);
-	}
+        cardFrozenBy = null;
+        isGraded     = false;
 
-	public boolean isGraded() {
-		return isGraded;
-	}
+    }
 
-	@Override
-	public int getScore() {
-		return isGraded ? 1 : 0;
-	}
-	
-	public String toHtmlString() {
-		StringBuilder builder = new StringBuilder();
-		if (this.isGraded) {
-			builder.append("<font color=green size=3 face=\"sanserif\"><center>A+</center></font>");
-		} else if (this.isFrozen()) {
-			builder.append("<font color=blue size=3 face=\"sanserif\"><center>*</center></font>");
-		}
-		builder.append(super.toHtmlString());
-		return builder.toString();
-	}
+    public FreezeSubjectCard getCardFrozenBy() {
 
-        /**
-         * 
-         * @param card
-         */
-        public void setGUICard(TableCard card){
-            
-            guiCard = card;
-            
+        return cardFrozenBy;
+
+    }
+
+    public void freezeWith(FreezeSubjectCard card) throws InvalidActionException {
+
+        if (isFrozen()) {
+
+            throw new InvalidActionException("Subject is already frozen");
+
         }
-        
-        /**
-         * 
-         * @return
-         */
-        public TableCard getGUICard(){
-            
-            return guiCard;
-            
+
+        if (isGraded) {
+
+            throw new InvalidActionException("Subject is graded.");
+
         }
-        
+
+        cardFrozenBy = card;
+
+    }
+
+    public void gradeWith(FreezeSubjectCard card) throws InvalidActionException {
+
+        if (isFrozen()) {
+
+            throw new InvalidActionException("Subject is frozen");
+
+        }
+
+        if (isGraded) {
+
+            throw new InvalidActionException("Subject is already graded.");
+
+        }
+
+        cardFrozenBy = card;
+        isGraded     = true;
+
+        Player player = getGUICard().getTable().getPlayer();
+
+        player.incGrade();
+
+    }
+
+    public void unfreeze() throws InvalidActionException {
+
+        if (!isFrozen() || isGraded) {
+
+            throw new InvalidActionException("Subject is not already frozen.");
+
+        }
+
+        cardFrozenBy = null;
+
+    }
+
+    public boolean isFrozen() {
+
+        return (cardFrozenBy != null);
+
+    }
+
+    public boolean isGraded() {
+
+        return isGraded;
+
+    }
+
+    @Override
+    public int getScore() {
+
+        return isGraded
+               ? 1
+               : 0;
+
+    }
+
+    public String toHtmlString() {
+
+        StringBuilder builder = new StringBuilder();
+
+        if (this.isGraded) {
+
+            builder.append("<font color=green size=3 face=\"sanserif\"><center>A+</center></font>");
+
+        } else if (this.isFrozen()) {
+
+            builder.append("<font color=blue size=3 face=\"sanserif\"><center>*</center></font>");
+
+        }
+
+        builder.append(super.toHtmlString());
+
+        return builder.toString();
+
+    }
+
+    /**
+     *
+     * @param card
+     */
+    public void setGUICard(TableCard card) {
+
+        guiCard = card;
+
+    }
+
+    /**
+     *
+     * @return
+     */
+    public TableCard getGUICard() {
+
+        return guiCard;
+
+    }
 }
+
+
+

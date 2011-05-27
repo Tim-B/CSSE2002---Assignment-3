@@ -1,40 +1,40 @@
 package models.impl;
 
+//~--- non-JDK imports --------------------------------------------------------
+
 import models.BadCardException;
 import models.BadDeckException;
-import models.BonusCard.BonusCardType;
-import java.io.File;
-import java.io.IOException;
-import java.io.Reader;
-
 import models.BadFormatException;
 import models.BonusCard;
 import models.Card;
 import models.Deck;
+import models.FreezePlayerCard;
 import models.FreezeSubjectCard;
-import models.FreezeSubjectCard.FreezeSubjectCardType;
-import java.io.BufferedInputStream;
+import models.SubjectCard;
+
+//~--- JDK imports ------------------------------------------------------------
+
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.LineNumberReader;
-import java.lang.reflect.Constructor;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Reader;
+
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 /**
- * The DeckLoader class is responsible for reading and writing 
- * decks of cards.  This class follows the Singleton Class
- * design pattern, with {@link #getInstance()} returning the
- * singleton instance.
- * 
+ * The DeckLoader class is responsible for reading and writing
+ * decks of cards.
+ *
  * <h3>File Format</h3>
- * <p>
- * The file format for a deck of cards consists of zero or more 
- * <u>card description</u> lines terminated with line separators 
+ * The file format for a deck of cards consists of zero or more
+ * <u>card description</u> lines terminated with line separators
  * (as described below).  A <u>card description</u> line consists
  * of 3 or 4 fields separated by a comma (",") character, where the
  * fields are as follows
@@ -46,10 +46,11 @@ import java.util.ArrayList;
  *   <li>Field 4 is the card id.  If present, it is an integer.</li>
  * </ul>
  * If the card id field is present, the card count should be 1, and
- * the card description specifies that a single card should be created with 
+ * the card description specifies that a single card should be created with
  * the given id.  If the card field is absent, the card count specifies
  * the number of cards to be created.
- * 
+ * <p>
+ * There should be no leading or trailing spaces on any of the fields.
  * <h3>Card types</h3>
  * The following card type strings should be supported:
  * <ul>
@@ -63,20 +64,18 @@ import java.util.ArrayList;
  * <li>"steal_all_players" - denotes a BonusCard with type STEAL_ALL_PLAYERS.</li>
  * </ul>
  * <p>
- * 
+ *
  * <h3>Line Separators</h3>
- * <p>
  * When the file is written, the current platform's line separator
  * shall be used.  When the file is read, any of the following shall
  * be accepted as a line separator:
  * <ul>
- * <li>CR (i.e. "\r") - Mac style.</li> 
- * <li>NL (i.e. "\n") - UNIX / Linux style.</li> 
- * <li>CR NL (i.e. "\r\n") - DOS / Windows style. </li> 
+ * <li>CR (i.e. "\r") - Mac style.</li>
+ * <li>NL (i.e. "\n") - UNIX / Linux style.</li>
+ * <li>CR NL (i.e. "\r\n") - DOS / Windows style. </li>
  * </ul>
- * 
  * <h3>Examples</h3>
- * Here is a file consisting of 3-field card descriptors; e.g.
+ * Here is a "file" consisting of 3-field card descriptors; e.g.
  * for initializing a fresh deck of cards.
  * <pre>
  * subject,30,Subject Card
@@ -88,389 +87,387 @@ import java.util.ArrayList;
  * steal_one_player,3,Computer Hack
  * steal_all_players,2,Mind Control
  * </pre>
- * Here is a file of 4-field card descriptors; e.g.
+ * Here is a "file" of 4-field card descriptors; e.g.
  * representing a saved deck of cards.
  * <pre>
-
+ * subject,1,Subject Card,21
+ * grade,1,Grade Card,1
+ * grade,1,Grade Card,15
+ * freeze_player,1,Computer Virus,26
+ * subject,1,Subject Card,8
+ * subject,1,Subject Card,13
  * </pre>
  */
 public class DeckLoader {
 
-	/**
-	 * Stored the singleton class instance
-	 */
-	private static DeckLoader classInstance = new DeckLoader();
-
-	/**
-	 * Stores the current card count, used to generate ID
-	 */
-	private int cardcnt;
-
-	/**
-	 * Private constructor to prevent direct instanation.
-	 */
-	private DeckLoader(){
-		
-	}
+    //
+    // INVARIANTS:
+    // 'INSTANCE' contains the singleton instance.
+    //
 
-	/*
-	 * Invariants.
-	 * 'classInstance' contains the instance of the singleton class.
-	 */
-	
-	/**
-	 * Return the instance of this class.
-	 * 
-	 * @return the singleton DeckLoader instance.
-	 */
-	public static DeckLoader getInstance() {
-	
-		return classInstance;
-		
-	}
+    /**
+     * The singleton instance.
+     */
+    private static final DeckLoader INSTANCE = new DeckLoader();
 
-	/**
-	 * Load a deck of cards from a file.  The format of the file is as
-	 * specified in the class-level javadoc.  Both 3 and 4 field card
-	 * descriptions are supported.
-	 * 
-	 * @param file the file containing the serialized deck of cards.
-	 * @return the deck of cards.
-	 * @throws IOException if there is a problem opening or reading the file.
-         * @throws BadFormatException if there is a problem with the format
-	 *         of the input file / stream, or if the resulting cards or
-	 *         deck violate their respective invariants. 
-	 */
-	public Deck load(File file) throws IOException, BadFormatException{
+    /**
+     * Private constructor for creating the singleton instance.
+     */
+    private DeckLoader() {}
 
-		try{
+    /**
+     * Get the singleton instance.
+     *
+     * @return the singleton DeckLoader instance.
+     */
+    public static DeckLoader getInstance() {
 
-			//Convert file to a reader
-			FileReader reader = new FileReader(file);
+        return INSTANCE;
 
-			//Pass to reader load function
-			Deck deck = load(reader);
+    }
 
-			reader.close();
+    /**
+     * Load a deck of cards from a file.  The format of the file is as
+     * specified in the class-level javadoc.  Both 3 and 4 field card
+     * descriptions are supported.
+     *
+     * @param file the file containing the serialized deck of cards.
+     * @return the deck of cards.
+     * @throws IOException if there is a problem opening or reading the file.
+     * @throws BadFormatException if there is a problem with the format
+     *         of the input file / stream, or if the resulting cards or
+     *         deck violate their respective invariants.
+     */
+    public Deck load(File file) throws IOException, BadFormatException {
 
-			return deck;
+        Reader reader = new FileReader(file);
 
-		} catch(FileNotFoundException exep) {
+        try {
 
-			throw new IOException(exep);
+            return load(reader);
 
-		} catch (Exception exep) {
+        } finally {
 
-			throw new BadFormatException("Cards are badly formatted", exep);
+            reader.close();
+        }
 
-		}
+    }
 
-	}
+    /**
+     * Load a deck of cards from a Reader.  The format of the character
+     * stream is as specified in the class-level javadoc.  Both 3 and 4
+     * field card descriptions are supported.
+     *
+     * @param reader the reader containing the serialized deck of cards.
+     * @return the deck of cards.
+     * @throws IOException if there is a problem reading the reader.
+     * @throws BadFormatException if there is a problem with the format
+     *         of the input file / stream, or if the resulting cards or
+     *         deck violate their respective invariants.
+     */
+    public Deck load(Reader reader) throws IOException, BadFormatException {
 
-	/**
-	 * Load a deck of cards from a Reader.  The format of the character
-	 * stream is as specified in the class-level javadoc.  Both 3 and 4 
-	 * field card descriptions are supported.
-	 * 
-	 * @param reader the reader containing the serialized deck of cards.
-	 * @return the deck of cards.
-	 * @throws IOException if there is a problem reading the reader.
-	 * @throws BadFormatException if there is a problem with the format
-	 *         of the input file / stream, or if the resulting cards or
-	 *         deck violate their respective invariants. 
-	 */
-	public Deck load(Reader reader) throws IOException, BadFormatException{
+        // Insert a buffered reader into the stack if there isn't one
+        // there already.
+        BufferedReader br    = (reader instanceof BufferedReader)
+                               ? (BufferedReader) reader
+                               : new BufferedReader(reader);
+        List<Card>     cards = new ArrayList<Card>();
 
-		try{
+        // Use readLine to split into lines, then a Scanner to
+        // split each line into fields.
+        String line;
 
-			LineNumberReader lineRead = new LineNumberReader(reader);
+        while ((line = br.readLine()) != null) {
 
-			ArrayList<String[]> lines = new ArrayList();
+            Scanner scanner = new Scanner(line);
 
-			String line;
+            scanner.useDelimiter(",");
 
-			cardcnt = 0;
+            try {
 
-			ArrayList<Card> deck = new ArrayList();
+                String  type  = scanner.next();
+                int     count = scanner.nextInt();
+                String  name  = scanner.next();
+                boolean hasId = false;
+                int     id    = 0;
 
-			//Generate ArrayList of arrays to represent each line
-			//Each line split by , delimiter to form array
-			while((line = lineRead.readLine()) != null){
+                if (scanner.hasNextInt()) {
 
-				lines.add(line.split(","));
+                    hasId = true;
+                    id    = scanner.nextInt();
 
-			}
+                    if (scanner.hasNext()) {
 
-			//Pass lines to helper function which returns deck
-			deck = generateCards(lines);
+                        throw new BadFormatException("too many fields");
 
-			Card[] deckarray = new Card[deck.size()];
+                    }
 
-			//Convert ArrayList to Array to pass to DeckImpl constructor
-			for(int i = 0; i < deck.size(); i++){
+                }
 
-				deckarray[i] = deck.get(i);
+                if (hasId) {
 
-			}
+                    if (count != 1) {
 
-			lineRead.close();
+                        throw new BadFormatException("count field must be '1' in 4 field records");
 
-			return new DeckImpl(deckarray);
+                    }
 
-		} catch(FileNotFoundException exep) {
+                    cards.add(recreateCard(name, type, id));
 
-			throw new IOException(exep);
+                } else {
 
-		} catch (Exception exep) {
+                    if (count < 0) {
 
-			throw new BadFormatException("Cards are badly formatted", exep);
+                        throw new BadFormatException("count field is negative");
 
-		}
-	}
-	
-	/**
-	 * Save a deck of cards to a file using 4 field card descriptions 
-	 * as specified in the class-level javadoc.
-	 * 
-	 * @param deck the Deck to be saved.
-	 * @param file the File to save the files to.
-	 * @throws IOException if there is a problem opening or writing the file.
-	 */
-	public void save(Deck deck, File file) throws IOException {
+                    }
 
-		try{
+                    for (int i = 0; i < count; i++) {
 
-			Deck deckcopy = deck;
+                        cards.add(createCard(name, type));
 
-			FileWriter writer = new FileWriter(file);
+                    }
 
-			BufferedWriter lineWriter = new BufferedWriter(writer);
+                }
 
-			String line;
-			
-			//Piece together line
+            } catch (BadCardException ex) {
 
-			for(Card card : deckcopy){
+                throw new BadFormatException("invalid card", ex);
 
-				line = translateToName(card);
+            } catch (NoSuchElementException ex) {
 
-				line = line.concat(",");
+                throw new BadFormatException("badly formated line", ex);
+            }
 
-				line = line.concat("1");
+            if (scanner.hasNext()) {
 
-				line = line.concat(",");
+                scanner.nextLine();
 
-				line = line.concat(card.getName());
+            }
 
-				line = line.concat(",");
+        }
 
-				String id = Integer.toString(card.getId());
+        try {
 
-				line = line.concat(id);
+            return new DeckImpl(cards.toArray(new Card[cards.size()]));
 
-				lineWriter.write(line);
+        } catch (BadDeckException ex) {
 
-				lineWriter.newLine();
+            throw new BadFormatException("invalid deck", ex);
+        }
+    }
 
-			}
+    /**
+     * Create a Card object of the appropriate class with the
+     * supplied name and type.  The type determines the card
+     * class, and (in some cases) the card's type field.  The
+     * card will have a new 'id' allocated, though this may not
+     * be unique with respect to cards that are recreated.
+     *
+     * @param name the supplied card name
+     * @param type the supplied card type.
+     * @return the card that was created.
+     * @throws BadCardException if the card fields are invalid
+     * @throws BadFormatException if we don't recognize the type.
+     */
+    private Card createCard(String name, String type) throws BadCardException, BadFormatException {
 
-			lineWriter.close();
+        // Ugly 'if' switch.  (In Java 7 we'll be able to use a
+        // switch statement instead.
+        if (type.equals("subject")) {
 
-			writer.close();
-		
-		}catch(FileNotFoundException exep) {
+            return new SubjectCardImpl(name);
 
-			throw new IOException(exep);
+        } else if (type.equals("freeze_player")) {
 
-		}
+            return new FreezePlayerCardImpl(name);
 
-	}
+        } else if (type.equals("freeze_subject")) {
 
-	/**
-	 * Helper function to return a list of cards based on an ArrayList
-	 * of arrays containing the data about a card.
-	 * @param lines An ArrayList of String arrays
-	 * @return ArrayList<Card> returns an ArrayList of cards based on input
-	 * @throws BadFormatException if the card type cannot be found
-	 * @throws BadCardException if a card input is not valid
-	 */
-	private ArrayList<Card> generateCards(ArrayList<String[]> lines) throws BadFormatException, BadCardException{
+            return new FreezeSubjectCardImpl(name, FreezeSubjectCard.FreezeSubjectCardType.NORMAL);
 
-		ArrayList<Card> cards = new ArrayList();
+        } else if (type.equals("grade")) {
 
-		ArrayList<Integer> definedids = new ArrayList();
+            return new FreezeSubjectCardImpl(name, FreezeSubjectCard.FreezeSubjectCardType.GRADE);
 
-		//Generates a list of fixed IDs defined in the file
-		for(String[] line : lines){
-		
-			if(line.length == 4){
-			
-				definedids.add(Integer.parseInt(line[3]));
-				
-			}
-			
-		}
+        } else if (type.equals("unfreeze_player")) {
 
-		for(String[] line : lines){
-			
-			int cardcount = Integer.parseInt(line[1]);
+            return new BonusCardImpl(name, BonusCardImpl.BonusCardType.UNFREEZE_PLAYER);
 
-			int id;
+        } else if (type.equals("unfreeze_subject")) {
 
-			for(int i = 0; i < cardcount; i++){
+            return new BonusCardImpl(name, BonusCardImpl.BonusCardType.UNFREEZE_SUBJECT);
 
-				if(line.length == 3){
+        } else if (type.equals("steal_one_player")) {
 
-					//Increment card ID
-					cardcnt++;
+            return new BonusCardImpl(name, BonusCardImpl.BonusCardType.STEAL_ONE_PLAYER);
 
-					//If card ID is already taken by a card with a fixed ID
-					//continue incrementing until a unique ID is found
-					while(definedids.contains(cardcnt)){
+        } else if (type.equals("steal_all_players")) {
 
-						cardcnt++;
+            return new BonusCardImpl(name, BonusCardImpl.BonusCardType.STEAL_ALL_PLAYERS);
 
-					}
+        } else {
 
-					id = cardcnt;
+            throw new BadFormatException("Unknown type '" + type + "'");
 
-				}else{
+        }
+    }
 
-					id = Integer.parseInt(line[3]);
+    /**
+     * Recreate a Card object of the appropriate class with the
+     * supplied name, type and id.  The type determines the card
+     * class, and (in some cases) the card's type field.  We don't
+     * check the uniqueness of the card id.
+     *
+     * @param name the supplied card name
+     * @param type the supplied card type.
+     * @param id the to be used for the recreated card
+     * @return the card that was created.
+     * @throws BadCardException if the card fields are invalid
+     * @throws BadFormatException if we don't recognize the type.
+     */
+    private Card recreateCard(String name, String type, int id) throws BadCardException, BadFormatException {
 
-				}
+        // This is the analog of the 'if' switch in the previous method
+        if (type.equals("subject")) {
 
-				cards.add(translateCard(line[0], id, line[2]));
+            return new SubjectCardImpl(name, id);
 
-			}
-			
-		}
+        } else if (type.equals("freeze_player")) {
 
-		return cards;
+            return new FreezePlayerCardImpl(name, id);
 
-	}
+        } else if (type.equals("freeze_subject")) {
 
-	/**
-	 * Translates the string of the card type into a class then instanate
-	 * that class.
-	 * @param type The type of the card as a string.
-	 * @param id The ID of the card to be generated
-	 * @param name The name of the card to be generate
-	 * @return card The card instance
-	 * @throws BadFormatException if the card type cannot be found
-	 * @throws BadCardException if the card cannot be created
-	 */
-	private Card translateCard(String type, int id, String name) throws BadFormatException, BadCardException{
+            return new FreezeSubjectCardImpl(name, id, FreezeSubjectCard.FreezeSubjectCardType.NORMAL);
 
-		if(type.equals("subject")){
+        } else if (type.equals("grade")) {
 
-		   return new SubjectCardImpl(name, id);
+            return new FreezeSubjectCardImpl(name, id, FreezeSubjectCard.FreezeSubjectCardType.GRADE);
 
-		}else if(type.equals("freeze_player")){
+        } else if (type.equals("unfreeze_player")) {
 
-			return new FreezePlayerCardImpl(name, id);
+            return new BonusCardImpl(name, id, BonusCardImpl.BonusCardType.UNFREEZE_PLAYER);
 
-		}else if(type.equals("freeze_subject")){
+        } else if (type.equals("unfreeze_subject")) {
 
-			FreezeSubjectCardType cardVariant = FreezeSubjectCardType.NORMAL;
+            return new BonusCardImpl(name, id, BonusCardImpl.BonusCardType.UNFREEZE_SUBJECT);
 
-			return new FreezeSubjectCardImpl(name, id, cardVariant);
+        } else if (type.equals("steal_one_player")) {
 
-		}else if(type.equals("grade")){
+            return new BonusCardImpl(name, id, BonusCardImpl.BonusCardType.STEAL_ONE_PLAYER);
 
-			FreezeSubjectCardType cardVariant = FreezeSubjectCardType.GRADE;
+        } else if (type.equals("steal_all_players")) {
 
-			return new FreezeSubjectCardImpl(name, id, cardVariant);
+            return new BonusCardImpl(name, id, BonusCardImpl.BonusCardType.STEAL_ALL_PLAYERS);
 
-		}else if(type.equals("unfreeze_player")){
+        } else {
 
-			BonusCard.BonusCardType cardVariant = BonusCard.BonusCardType.UNFREEZE_PLAYER;
+            throw new BadFormatException("Unknown type '" + type + "'");
 
-			return new BonusCardImpl(name, id, cardVariant);
+        }
+    }
 
-		}else if(type.equals("unfreeze_subject")){
+    /**
+     * Save a deck of cards to a file using 4 field card descriptors
+     * as specified in the class-level javadoc.
+     *
+     * @param deck the Deck to be saved.
+     * @param file the File to save the cards to.
+     * @throws IOException if there is a problem opening or writing the file.
+     */
+    public void save(Deck deck, File file) throws IOException {
 
-			BonusCard.BonusCardType cardVariant = BonusCard.BonusCardType.UNFREEZE_SUBJECT;
+        PrintWriter pw = new PrintWriter(new FileWriter(file));
 
-			return new BonusCardImpl(name, id, cardVariant);
+        try {
 
-		}else if(type.equals("steal_one_player")){
+            for (Card card : deck) {
 
-			BonusCard.BonusCardType cardVariant = BonusCard.BonusCardType.STEAL_ONE_PLAYER;
+                String serialType = getSerialType(card);
 
-			return new BonusCardImpl(name, id, cardVariant);
+                pw.print(serialType);
+                pw.print(',');
+                pw.print(1);
+                pw.print(',');
+                pw.print(card.getName());
+                pw.print(',');
+                pw.print(card.getId());
+                pw.println();
 
-		}else if(type.equals("steal_all_players")){
+            }
 
-			BonusCard.BonusCardType cardVariant = BonusCard.BonusCardType.STEAL_ALL_PLAYERS;
+        } finally {
 
-			return new BonusCardImpl(name, id, cardVariant);
+            pw.close();
+        }
 
-		}else{
+    }
 
-			throw new BadFormatException("Card not recognised: "+type);
-			
-		}
-		
-	}
+    /**
+     * Map a card to the appropriate card type string as specified
+     * in the serial format spec.
+     *
+     * @param card the card to be mapped
+     * @return the corresponding type string.
+     */
+    private String getSerialType(Card card) {
 
-	/**
-	 * Translates a card into it's string card type
-	 * @param card the card to be translated
-	 * @return the string representing the type of card
-	 */
-	private String translateToName(Card card){
+        if (card instanceof SubjectCard) {
 
-		String cardClass = card.getClass().getSimpleName().toString();
+            return "subject";
 
-		 if(cardClass.equals("BonusCardImpl")){
+        } else if (card instanceof FreezePlayerCard) {
 
-			BonusCardImpl bonusCard = (BonusCardImpl) card;
+            return "freeze_player";
 
-			BonusCardType type = bonusCard.getType();
+        } else if (card instanceof FreezeSubjectCard) {
 
-			if(type.equals(BonusCard.BonusCardType.UNFREEZE_PLAYER)){
+            FreezeSubjectCard.FreezeSubjectCardType type = ((FreezeSubjectCard) card).getType();
 
-				return "unfreeze_player";
+            switch (type) {
 
-			}else if(type.equals(BonusCard.BonusCardType.UNFREEZE_SUBJECT)){
+            case NORMAL :
+                return "freeze_subject";
 
-				return "unfreeze_subject";
+            case GRADE :
+                return "grade";
 
-			}else if(type.equals(BonusCard.BonusCardType.STEAL_ONE_PLAYER)){
+            default :
+                throw new AssertionError("Unknown FreezeSubjectCard type " + type);
+            }
 
-				return "steal_one_player";
+        } else if (card instanceof BonusCard) {
 
-			}else if(type.equals(BonusCard.BonusCardType.STEAL_ALL_PLAYERS)){
+            BonusCard.BonusCardType type = ((BonusCard) card).getType();
 
-				return "steal_all_players";
+            switch (type) {
 
-			}
+            case UNFREEZE_PLAYER :
+                return "unfreeze_player";
 
-		}else if(cardClass.equals("FreezeSubjectCardImpl")){
+            case UNFREEZE_SUBJECT :
+                return "unfreeze_subject";
 
-			FreezeSubjectCardImpl freezePlayerCard = (FreezeSubjectCardImpl) card;
+            case STEAL_ONE_PLAYER :
+                return "steal_one_player";
 
-			FreezeSubjectCardType type = freezePlayerCard.getType();
+            case STEAL_ALL_PLAYERS :
+                return "steal_all_players";
 
-			if(type.equals(FreezeSubjectCard.FreezeSubjectCardType.GRADE)){
+            default :
+                throw new AssertionError("Unknown BonusCard type " + type);
+            }
 
-				return "grade";
+        } else {
 
-			}else if(type.equals(FreezeSubjectCard.FreezeSubjectCardType.NORMAL)){
+            throw new AssertionError("Unknown Card class: " + card.getClass());
 
-				return "freeze_subject";
+        }
 
-			}
-
-		}else if(cardClass.equals("FreezePlayerCardImpl")){
-
-			return "freeze_player";
-			
-		}
-
-		return "subject";
-			 
-	}
-	
+    }
 }
+
+
+
