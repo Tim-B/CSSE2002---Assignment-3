@@ -11,6 +11,7 @@ import models.FreezeSubjectCard;
 import models.Player;
 import models.SubjectCard;
 import models.UserException;
+import view.MainWindow;
 
 import view.components.PlayerHand;
 
@@ -217,7 +218,7 @@ public class GUIPlayer extends AbstractPlayer {
         cardToFreeze = null;
         cardInPlay   = null;
 
-        main.app.getGame().getHand().rebuildHand();
+        MainWindow.getInstance().getGame().getHand().rebuildHand();
 
     }
 }

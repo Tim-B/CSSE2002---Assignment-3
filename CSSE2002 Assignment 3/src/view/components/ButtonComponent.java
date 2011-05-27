@@ -2,7 +2,8 @@ package view.components;
 
 //~--- non-JDK imports --------------------------------------------------------
 
-import controllers.buttonController;
+import controllers.ButtonController;
+import view.MainWindow;
 
 //~--- JDK imports ------------------------------------------------------------
 
@@ -18,7 +19,7 @@ public class ButtonComponent extends JButton {
 
         setText(title);
 
-        addActionListener(new buttonController());
+        addActionListener(new ButtonController());
 
         setActionCommand(action);
 

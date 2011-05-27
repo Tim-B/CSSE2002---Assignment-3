@@ -2,7 +2,7 @@ package view.components;
 
 //~--- non-JDK imports --------------------------------------------------------
 
-import controllers.main;
+import view.MainWindow;
 
 //~--- JDK imports ------------------------------------------------------------
 
@@ -19,7 +19,7 @@ public class ErrorAlert {
      */
     public ErrorAlert(String message) {
 
-        JOptionPane.showMessageDialog(main.app, message);
+        JOptionPane.showMessageDialog(MainWindow.getInstance(), message);
 
     }
 }

@@ -2,7 +2,7 @@ package view;
 
 //~--- non-JDK imports --------------------------------------------------------
 
-import controllers.buttonController;
+import controllers.ButtonController;
 import controllers.main;
 import models.Player;
 import models.impl.Game;
@@ -24,18 +24,18 @@ import javax.swing.JPanel;
  * Extends a JFrame Swing element
  *
  */
-public abstract class mainWindow extends JFrame {
+public class MainWindow extends JFrame {
 
     /**
      * Sets the button controller to the buttonController class
      */
-    protected buttonController uiController = new buttonController();
+    protected ButtonController uiController = new ButtonController();
     private final JFileChooser fileChooser  = new JFileChooser();
     
     /**
      * The singleton instance of the application.
      */
-    private mainWindow instance;
+    private static MainWindow instance = null;
 
     /**
      * The instance of the current game
@@ -50,7 +50,7 @@ public abstract class mainWindow extends JFrame {
     /**
      * The main function of the GUI
      */
-    private mainWindow() {
+    protected MainWindow() {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -74,6 +74,23 @@ public abstract class mainWindow extends JFrame {
 
         add(mainPanel);
 
+    }
+    
+    
+    /**
+     * Returns the singleton instance.
+     * @return The instance
+     */
+    public static MainWindow getInstance(){
+        
+        if(instance == null){
+            
+            instance = new MainWindow();
+            
+        }
+        
+        return instance;
+        
     }
 
     /**
@@ -155,7 +172,7 @@ public abstract class mainWindow extends JFrame {
 
                 if (currentPlayer.wonGame()) {
 
-                    main.app.endGame("Game won by: " + currentPlayer.getPlayerName());
+                    MainWindow.getInstance().endGame("Game won by: " + currentPlayer.getPlayerName());
 
                     return;
 
@@ -169,7 +186,7 @@ public abstract class mainWindow extends JFrame {
 
             if (noMoves == game.allPlayers().size()) {
 
-                main.app.endGame("Game is a draw");
+                MainWindow.getInstance().endGame("Game is a draw");
 
             }
 

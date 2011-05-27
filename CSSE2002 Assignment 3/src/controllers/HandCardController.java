@@ -11,6 +11,7 @@ import models.Card;
 import models.FreezeSubjectCard;
 import models.SubjectCard;
 import models.UserException;
+import view.MainWindow;
 
 import models.impl.FreezeSubjectCardImpl;
 import models.impl.GUIPlayer;
@@ -36,9 +37,9 @@ public class HandCardController extends CardController {
 
         Card      card          = cardComponent.getCard();
 
-        GUIPlayer player        = main.app.getGame().getGUIPlayer();
+        GUIPlayer player        = MainWindow.getInstance().getGame().getGUIPlayer();
 
-        main.app.getGame().getHand().setSelected(cardComponent);
+        MainWindow.getInstance().getGame().getHand().setSelected(cardComponent);
 
         player.setCardToPlay(card);
 

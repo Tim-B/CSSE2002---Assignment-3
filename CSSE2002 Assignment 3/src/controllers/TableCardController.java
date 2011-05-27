@@ -24,6 +24,7 @@ import java.awt.event.ActionListener;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import view.MainWindow;
 
 /**
  * Controller for the TableCard object. Extends from cardController
@@ -33,11 +34,11 @@ public class TableCardController extends CardController {
 
     public void actionPerformed(ActionEvent event) {
 
-        TableCard   cardComponent = (TableCard) event.getSource();
+        TableCard cardComponent = (TableCard) event.getSource();
 
-        SubjectCard card          = (SubjectCard) cardComponent.getCard();
+        SubjectCard card = (SubjectCard) cardComponent.getCard();
 
-        GUIPlayer   player        = main.app.getGame().getGUIPlayer();
+        GUIPlayer player = MainWindow.getInstance().getGame().getGUIPlayer();
 
         try {
 
@@ -51,13 +52,13 @@ public class TableCardController extends CardController {
 
             }
 
-            main.app.getGame().setSelected(cardComponent);
+            MainWindow.getInstance().getGame().setSelected(cardComponent);
 
         } catch (UserException ex) {
 
             new ErrorAlert(ex.toString());
 
-            // main.app.getGame().setSelected(null);
+            // MainWindow.getInstance().getGame().setSelected(null);
 
         }
 

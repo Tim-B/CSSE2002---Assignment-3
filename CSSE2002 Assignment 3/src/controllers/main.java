@@ -6,26 +6,21 @@
 package controllers;
 
 //~--- non-JDK imports --------------------------------------------------------
-import view.mainWindow;
+import view.MainWindow;
 
 
 /**
  * The main class
  */
-public class main extends mainWindow {
+public class main{
 
     /**
-     * The top of the application class hierarchy
-     */
-    public static main app;
-
-    /**
-     *
-     * @param a initializes the program
+     * The entrypoint to the application
+     * @param a any application arguments
      */
     public static void main(String[] a) {
 
-        app = new main();
+        MainWindow.getInstance();
 
     }
 }

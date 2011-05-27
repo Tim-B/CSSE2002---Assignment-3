@@ -2,7 +2,7 @@ package view.components;
 
 //~--- non-JDK imports --------------------------------------------------------
 
-import controllers.main;
+import view.MainWindow;
 
 //~--- JDK imports ------------------------------------------------------------
 
@@ -20,7 +20,7 @@ public class ShufflePopup {
      */
     public static Boolean ShufflePopup() {
 
-        int result = new JOptionPane().showConfirmDialog(main.app, "Do you want to shuffle the deck?", "Shuffle deck",
+        int result = new JOptionPane().showConfirmDialog(MainWindow.getInstance(), "Do you want to shuffle the deck?", "Shuffle deck",
                          JOptionPane.YES_NO_OPTION);
 
         if (result == JOptionPane.YES_OPTION) {

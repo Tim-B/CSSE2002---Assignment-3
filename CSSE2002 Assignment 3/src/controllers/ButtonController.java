@@ -9,12 +9,13 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.MainWindow;
 
 /**
  * Controller for all buttons. Implements a ActionListener instance
  *
  */
-public class buttonController implements ActionListener {
+public class ButtonController implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
@@ -22,7 +23,7 @@ public class buttonController implements ActionListener {
 
         if (source.equals("next_round")) {
 
-            main.app.newRound();
+            MainWindow.getInstance().newRound();
 
         }
 

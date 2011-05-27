@@ -2,10 +2,10 @@ package view.components;
 
 //~--- non-JDK imports --------------------------------------------------------
 
-import controllers.menuController;
 
 //~--- JDK imports ------------------------------------------------------------
 
+import controllers.MenuController;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
@@ -26,7 +26,7 @@ public class MenuComponent extends JMenuBar {
 
         menuItem.setText("New Game");
 
-        menuItem.addActionListener(new menuController());
+        menuItem.addActionListener(new MenuController());
 
         menuItem.setActionCommand("new_game");
 

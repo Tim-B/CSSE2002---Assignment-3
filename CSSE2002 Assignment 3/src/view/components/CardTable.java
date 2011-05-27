@@ -2,14 +2,13 @@ package view.components;
 
 //~--- non-JDK imports --------------------------------------------------------
 
-import controllers.main;
+import view.MainWindow;
 
 import models.Player;
 import models.SubjectCard;
 
 //~--- JDK imports ------------------------------------------------------------
 
-import java.awt.Color;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -60,7 +59,7 @@ public class CardTable extends JScrollPane {
 
         panel.add(tableCard);
 
-        main.app.updateUI();
+        MainWindow.getInstance().updateUI();
 
     }
 

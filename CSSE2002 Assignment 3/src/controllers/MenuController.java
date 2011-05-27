@@ -11,12 +11,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import view.MainWindow;
 
 /**
  * Controller for all menu components. Implements ActionListener instance
  *
  */
-public class menuController implements ActionListener {
+public class MenuController implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
@@ -24,7 +25,7 @@ public class menuController implements ActionListener {
 
         if (source.equals("new_game")) {
 
-            main.app.newGame();
+            MainWindow.getInstance().newGame();
 
         }
 
