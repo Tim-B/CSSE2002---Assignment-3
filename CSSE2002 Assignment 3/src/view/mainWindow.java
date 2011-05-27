@@ -128,6 +128,7 @@ public abstract class mainWindow extends JFrame{
     
     /**
      * Ends the current game
+     * @param message the String endgame message
      */
     public void endGame(String message){
         

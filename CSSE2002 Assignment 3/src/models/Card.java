@@ -57,8 +57,8 @@ public interface Card {
 	 * {@link Object#equals(Object)} for the full contract for 
 	 * equals.
          * 
-         * @param other 
-         * @return 
+         * @param other the object being compared
+         * @return the boolean value of the two objects being compared
          */
 	@Override
 	public boolean equals(Object other);

@@ -37,7 +37,6 @@ public interface Player {
 	 
 	 /** Pick up a card from the deck, if any, and place it in the
 	  *  player's hand.
-          *  @return returns whether the a card could be picked up off the deck.
 	  */
 	 public void pickUp();
 	 
@@ -59,32 +58,32 @@ public interface Player {
          */
         public String getPlayerName();
         
-        /**
+        /**Sets the name of the player
          * 
-         * @param name
+         * @param name the name of the player
          */
         public void setPlayerName(String name);
         
-        /**
+        /**Sets the table the player is assigned to
          * 
-         * @param table
+         * @param table the CardTable object being assigned to
          */
         public void setPlayerTable(CardTable table);
         
-        /**
+        /**Gets the table the player is assigned to
          * 
-         * @return
+         * @return the CardTable object that the player is assigned to
          */
         public CardTable getPlayerTable();
         
-        /**
+        /**Increments the Grade
          * 
          */
         public void incGrade();
         
-        /**
+        /**Returns if the game has been won
          * 
-         * @return
+         * @return the boolean value of whether the game has been won
          */
         public boolean wonGame();
         

@@ -14,15 +14,23 @@ import view.components.PlayerHand;
 import view.components.ShufflePopup;
 
 /**
- * The model for the game. Loads the deck and adds players to the game.
- * @author Tim
+ * The model for the game. The class goes through the sequence
+ * (1) initializes private variables
+ * (2) loads the deck
+ * (3) prompts if the user wants to shuffle the deck
+ * (4) Assigns each player to the game and a hand to each player
+ * (5) plays the game
+ * 
  */
 public class Game{
     
+    /** The GUIPlayer object that represents the main player */
     private GUIPlayer player;
     
+    /** The ArrayList of Player objects that represents all the players */
     private ArrayList<Player> allPlayers = new ArrayList();
     
+    /** The ArrayList of Player objects that represents AI players */
     private ArrayList<VirtualPlayer> vPlayers = new ArrayList();
     
     private Deck deck;
@@ -36,6 +44,7 @@ public class Game{
     
     /**
      * Main function of the game
+     * @param deckFile the deck file that is being loaded into the game
      */
     public Game(File deckFile){
         
@@ -114,6 +123,7 @@ public class Game{
         return vPlayers;
         
     }
+    /** Private function that deals the cards to each player */
     
     private void deal(){
         

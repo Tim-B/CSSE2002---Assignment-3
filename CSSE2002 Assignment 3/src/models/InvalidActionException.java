@@ -7,7 +7,7 @@ public class InvalidActionException extends RuntimeException {
 
     /**
      * 
-     * @param message
+     * @param message the message to be passed to the exception
      */
     public InvalidActionException(String message) {
 		super(message);
@@ -15,8 +15,8 @@ public class InvalidActionException extends RuntimeException {
 
         /**
          * 
-         * @param message
-         * @param cause
+         * @param message the message being passed to the exception
+         * @param cause the throwable cause of the exception
          */
         public InvalidActionException(String message, Throwable cause) {
 		super(message, cause);

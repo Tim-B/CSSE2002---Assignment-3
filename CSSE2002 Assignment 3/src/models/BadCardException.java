@@ -8,7 +8,7 @@ public class BadCardException extends StudentsLifeException {
 
     /**
      * 
-     * @param message:
+     * @param message 
      */
     public BadCardException(String message) {
 		super(message);
@@ -16,8 +16,8 @@ public class BadCardException extends StudentsLifeException {
 
         /**
          * 
-         * @param message
-         * @param ex
+         * @param message the message to be passed to the exception
+         * @param ex the throwable condition that is passed to the exception
          */
         public BadCardException(String message, Throwable ex) {
 		super(message, ex);
