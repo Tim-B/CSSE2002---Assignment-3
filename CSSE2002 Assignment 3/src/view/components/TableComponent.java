@@ -3,13 +3,11 @@ package view.components;
 //~--- non-JDK imports --------------------------------------------------------
 
 import models.Player;
-import models.SubjectCard;
 
 import models.impl.Game;
 
 //~--- JDK imports ------------------------------------------------------------
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
