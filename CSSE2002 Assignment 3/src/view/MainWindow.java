@@ -5,11 +5,8 @@ package view;
 
 import controllers.ButtonController;
 import controllers.main;
-
 import models.Player;
-
 import models.impl.Game;
-
 import view.components.ErrorAlert;
 import view.components.GameEnvironmentComponent;
 import view.components.MenuComponent;
@@ -19,9 +16,7 @@ import view.components.SplashScreen;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-
 import java.io.File;
-
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -79,8 +74,6 @@ public class MainWindow extends JFrame {
         mainPanel = new JPanel();
 
         mainPanel.setLayout(new BorderLayout());
-
-        final JFileChooser fc = new JFileChooser();
 
         mainPanel.add(new SplashScreen());
 
