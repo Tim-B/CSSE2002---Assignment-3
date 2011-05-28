@@ -1,13 +1,14 @@
 
 package controllers;
 
+//~--- non-JDK imports --------------------------------------------------------
+
+import view.MainWindow;
+
 //~--- JDK imports ------------------------------------------------------------
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import view.MainWindow;
 
 /**
  * Controller for all menu components. Implements ActionListener instance
@@ -19,6 +20,7 @@ public class MenuController implements ActionListener {
 
         String source = e.getActionCommand();
 
+        // Action for the new game button
         if (source.equals("new_game")) {
 
             MainWindow.getInstance().newGame();

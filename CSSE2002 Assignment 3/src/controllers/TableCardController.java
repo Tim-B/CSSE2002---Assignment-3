@@ -5,14 +5,17 @@ package controllers;
 
 import models.SubjectCard;
 import models.UserException;
+
 import models.impl.GUIPlayer;
+
+import view.MainWindow;
+
 import view.components.ErrorAlert;
 import view.components.TableCard;
 
 //~--- JDK imports ------------------------------------------------------------
 
 import java.awt.event.ActionEvent;
-import view.MainWindow;
 
 /**
  * Controller for the TableCard object. Extends from cardController
@@ -30,23 +33,24 @@ public class TableCardController extends CardController {
 
         try {
 
+            // See if the card selected is in the players cards
             if (cardComponent.getTable().getPlayer().equals(player)) {
 
                 player.setCardInPlay(card);
 
             } else {
 
+                // If not, the player must want to freeze a card
                 player.setCardToFreeze(card);
 
             }
 
+            // Make the card appear selected.
             MainWindow.getInstance().getGame().setSelected(cardComponent);
 
         } catch (UserException ex) {
 
             new ErrorAlert(ex.toString());
-
-            // MainWindow.getInstance().getGame().setSelected(null);
 
         }
 

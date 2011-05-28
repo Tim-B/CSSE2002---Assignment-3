@@ -32,7 +32,8 @@ public interface SubjectCard extends Card {
      * @throws InvalidActionException
      * @param card  the card to be set afflicting
      */
-    public void freezeWith(FreezeSubjectCard card) throws InvalidActionException;
+    public void freezeWith(FreezeSubjectCard card)
+            throws InvalidActionException;
 
     /**
      * Sets this card to be graded. A card is graded once a grade card is

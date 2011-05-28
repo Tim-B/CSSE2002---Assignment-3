@@ -2,13 +2,13 @@
 package controllers;
 
 //~--- non-JDK imports --------------------------------------------------------
-import view.MainWindow;
 
+import view.MainWindow;
 
 /**
  * The main class
  */
-public class main{
+public class main {
 
     /**
      * The entrypoint to the application
@@ -16,6 +16,7 @@ public class main{
      */
     public static void main(String[] a) {
 
+        // Instanates the main window class.
         MainWindow.getInstance();
 
     }

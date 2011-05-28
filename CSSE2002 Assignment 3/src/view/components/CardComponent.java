@@ -7,6 +7,7 @@ import models.Card;
 //~--- JDK imports ------------------------------------------------------------
 
 import java.awt.Dimension;
+
 import javax.swing.JButton;
 
 /**
@@ -14,7 +15,7 @@ import javax.swing.JButton;
  */
 public abstract class CardComponent extends JButton {
 
-    Card    card;
+    Card card;
     Boolean frozen;
     Boolean graded;
 

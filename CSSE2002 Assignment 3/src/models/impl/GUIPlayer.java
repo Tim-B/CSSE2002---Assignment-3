@@ -9,6 +9,7 @@ import models.FreezeSubjectCard;
 import models.Player;
 import models.SubjectCard;
 import models.UserException;
+
 import view.MainWindow;
 
 //~--- JDK imports ------------------------------------------------------------
@@ -37,8 +38,8 @@ public class GUIPlayer extends AbstractPlayer {
      */
     public GUIPlayer(Deck deck) {
 
-        hand      = new ArrayList<Card>();
-        inPlay    = new ArrayList<SubjectCard>();
+        hand = new ArrayList<Card>();
+        inPlay = new ArrayList<SubjectCard>();
         opponents = new ArrayList<Player>();
         this.deck = deck;
 
@@ -70,7 +71,8 @@ public class GUIPlayer extends AbstractPlayer {
         }
 
         if ((cardToPlay instanceof FreezeSubjectCard)
-                && ((FreezeSubjectCard) cardToPlay).getType().equals(FreezeSubjectCard.FreezeSubjectCardType.NORMAL)) {
+                && ((FreezeSubjectCard) cardToPlay).getType().equals(
+                    FreezeSubjectCard.FreezeSubjectCardType.NORMAL)) {
 
             if (s.isFrozen() || s.isGraded()) {
 
@@ -84,7 +86,9 @@ public class GUIPlayer extends AbstractPlayer {
 
         } else {
 
-            throw new UserException("Card selected from hand cannot be applied " + "to opponent cards.");
+            throw new UserException(
+                "Card selected from hand cannot be applied "
+                + "to opponent cards.");
 
         }
 
@@ -108,7 +112,8 @@ public class GUIPlayer extends AbstractPlayer {
         }
 
         if ((cardToPlay instanceof FreezeSubjectCard)
-                && ((FreezeSubjectCard) cardToPlay).getType().equals(FreezeSubjectCard.FreezeSubjectCardType.GRADE)) {
+                && ((FreezeSubjectCard) cardToPlay).getType().equals(
+                    FreezeSubjectCard.FreezeSubjectCardType.GRADE)) {
 
             if (s.isFrozen() || s.isGraded()) {
 
@@ -130,7 +135,8 @@ public class GUIPlayer extends AbstractPlayer {
 
         } else {
 
-            throw new UserException("Selected card cannot be applied " + "to a card in play.");
+            throw new UserException("Selected card cannot be applied "
+                                    + "to a card in play.");
 
         }
 
@@ -148,7 +154,8 @@ public class GUIPlayer extends AbstractPlayer {
     public void play() throws UserException {
 
         if ((cardToPlay instanceof FreezeSubjectCard)
-                && ((FreezeSubjectCard) cardToPlay).getType().equals(FreezeSubjectCard.FreezeSubjectCardType.NORMAL)) {
+                && ((FreezeSubjectCard) cardToPlay).getType().equals(
+                    FreezeSubjectCard.FreezeSubjectCardType.NORMAL)) {
 
             if (cardToFreeze == null) {
 
@@ -179,7 +186,8 @@ public class GUIPlayer extends AbstractPlayer {
         }
 
         if ((cardToPlay instanceof FreezeSubjectCard)
-                && ((FreezeSubjectCard) cardToPlay).getType() == FreezeSubjectCard.FreezeSubjectCardType.GRADE) {
+                && ((FreezeSubjectCard) cardToPlay).getType()
+                   == FreezeSubjectCard.FreezeSubjectCardType.GRADE) {
 
             if (cardInPlay == null) {
 
@@ -210,9 +218,9 @@ public class GUIPlayer extends AbstractPlayer {
         hand.remove(cardToPlay);
 
         // reset card variables for next turn
-        cardToPlay   = null;
+        cardToPlay = null;
         cardToFreeze = null;
-        cardInPlay   = null;
+        cardInPlay = null;
 
         MainWindow.getInstance().getGame().getHand().rebuildHand();
 

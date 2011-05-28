@@ -13,10 +13,13 @@ import models.SubjectCard;
  */
 public class TableCard extends CardComponent {
 
+    /**
+     * Stores the instance of the table
+     */
     private CardTable table;
 
     /**
-     * The private constructor for TableCard
+     * The constructor for TableCard
      * @param card the card to be stored
      * @param table the table to be stored
      */
@@ -40,9 +43,12 @@ public class TableCard extends CardComponent {
 
     }
 
+    /**
+     * Set's the label on the Card instance
+     */
     private void setDetails() {
 
-        String      name    = "<html><center><b>" + card.getName() + "</b>";
+        String name = "<html><center><b>" + card.getName() + "</b>";
 
         SubjectCard subCard = (SubjectCard) card;
 
@@ -74,7 +80,6 @@ public class TableCard extends CardComponent {
         repaint();
 
     }
-
 }
 
 

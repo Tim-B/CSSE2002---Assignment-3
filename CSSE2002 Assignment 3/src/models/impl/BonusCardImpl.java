@@ -18,7 +18,8 @@ public class BonusCardImpl extends CardImpl implements BonusCard {
      * @param type
      * @throws BadCardException
      */
-    public BonusCardImpl(String name, BonusCard.BonusCardType type) throws BadCardException {
+    public BonusCardImpl(String name, BonusCard.BonusCardType type)
+            throws BadCardException {
 
         super(name);
 
@@ -33,7 +34,8 @@ public class BonusCardImpl extends CardImpl implements BonusCard {
      * @param type
      * @throws BadCardException
      */
-    public BonusCardImpl(String name, int id, BonusCard.BonusCardType type) throws BadCardException {
+    public BonusCardImpl(String name, int id, BonusCard.BonusCardType type)
+            throws BadCardException {
 
         super(name, id);
 

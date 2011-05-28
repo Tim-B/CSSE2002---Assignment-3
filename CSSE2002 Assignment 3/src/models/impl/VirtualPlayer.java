@@ -27,8 +27,8 @@ public class VirtualPlayer extends AbstractPlayer {
      */
     public VirtualPlayer(Deck deck) {
 
-        hand      = new ArrayList<Card>();
-        inPlay    = new ArrayList<SubjectCard>();
+        hand = new ArrayList<Card>();
+        inPlay = new ArrayList<SubjectCard>();
         opponents = new ArrayList<Player>();
         this.deck = deck;
 
@@ -88,7 +88,8 @@ public class VirtualPlayer extends AbstractPlayer {
             Card c = hi.next();    // next card in hand
 
             if ((c instanceof FreezeSubjectCard)
-                    && ((FreezeSubjectCard) c).getType().equals(FreezeSubjectCard.FreezeSubjectCardType.NORMAL)) {
+                    && ((FreezeSubjectCard) c).getType().equals(
+                        FreezeSubjectCard.FreezeSubjectCardType.NORMAL)) {
 
                 SubjectCard target = chooseTarget();    // opponent card to freeze
 
@@ -122,8 +123,8 @@ public class VirtualPlayer extends AbstractPlayer {
     private SubjectCard chooseTarget() {
 
         // maximum number of unfrozen cards a player has in play
-        int    maxCardsInPlay = 0;
-        Player opponent       = null;    // opponent to target
+        int maxCardsInPlay = 0;
+        Player opponent = null;    // opponent to target
 
         for (Player p : opponents) {
 
@@ -132,7 +133,7 @@ public class VirtualPlayer extends AbstractPlayer {
 
             if (unfrozenCards > maxCardsInPlay) {
 
-                opponent       = p;
+                opponent = p;
                 maxCardsInPlay = unfrozenCards;
 
             }
@@ -226,7 +227,8 @@ public class VirtualPlayer extends AbstractPlayer {
             Card c = hi.next();    // next card in hand
 
             if ((c instanceof FreezeSubjectCard)
-                    && ((FreezeSubjectCard) c).getType().equals(FreezeSubjectCard.FreezeSubjectCardType.GRADE)) {
+                    && ((FreezeSubjectCard) c).getType().equals(
+                        FreezeSubjectCard.FreezeSubjectCardType.GRADE)) {
 
                 // cards in play
                 Iterator<SubjectCard> pi = getCardsInPlayIterator();

@@ -58,12 +58,13 @@ public abstract class CardImpl implements Card {
 
         if (!name.equals(name.trim())) {
 
-            throw new BadCardException("name has leading or trailing whitespace");
+            throw new BadCardException(
+                "name has leading or trailing whitespace");
 
         }
 
         this.name = name;
-        this.id   = id;
+        this.id = id;
 
     }
 
@@ -119,8 +120,8 @@ public abstract class CardImpl implements Card {
     @Override
     public final int hashCode() {
 
-        final int prime  = 31;
-        int       result = 1;
+        final int prime = 31;
+        int result = 1;
 
         result = prime * result + id;
 

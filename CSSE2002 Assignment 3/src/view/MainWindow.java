@@ -5,8 +5,11 @@ package view;
 
 import controllers.ButtonController;
 import controllers.main;
+
 import models.Player;
+
 import models.impl.Game;
+
 import view.components.ErrorAlert;
 import view.components.GameEnvironmentComponent;
 import view.components.MenuComponent;
@@ -15,7 +18,10 @@ import view.components.SplashScreen;
 //~--- JDK imports ------------------------------------------------------------
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import java.io.File;
+
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -28,15 +34,19 @@ import javax.swing.JPanel;
 public class MainWindow extends JFrame {
 
     /**
-     * Sets the button controller to the buttonController class
-     */
-    protected ButtonController uiController = new ButtonController();
-    private final JFileChooser fileChooser  = new JFileChooser();
-    
-    /**
      * The singleton instance of the application.
      */
     private static MainWindow instance = null;
+
+    /**
+     * Sets the button controller to the buttonController class
+     */
+    protected ButtonController uiController = new ButtonController();
+
+    /**
+     * The instance of the file Chooser
+     */
+    private final JFileChooser fileChooser = new JFileChooser();
 
     /**
      * The instance of the current game
@@ -65,6 +75,7 @@ public class MainWindow extends JFrame {
 
         setLocationRelativeTo(null);
 
+        // Makes a container within the window that will be manipulated
         mainPanel = new JPanel();
 
         mainPanel.setLayout(new BorderLayout());
@@ -76,22 +87,21 @@ public class MainWindow extends JFrame {
         add(mainPanel);
 
     }
-    
-    
+
     /**
      * Returns the singleton instance.
      * @return The instance
      */
-    public static MainWindow getInstance(){
-        
-        if(instance == null){
-            
+    public static MainWindow getInstance() {
+
+        if (instance == null) {
+
             instance = new MainWindow();
-            
+
         }
-        
+
         return instance;
-        
+
     }
 
     /**
@@ -129,7 +139,6 @@ public class MainWindow extends JFrame {
 
                 updateUI();
 
-                System.out.println(mainPanel.getSize());
             }
 
         } catch (Exception exep) {}
@@ -142,11 +151,18 @@ public class MainWindow extends JFrame {
      */
     public void endGame(String message) {
 
+        // Display the outcome of the game
         new ErrorAlert(message);
 
         game = null;
 
         mainPanel.removeAll();
+
+        setMinimumSize(new Dimension(800, 456));
+
+        mainPanel.setLayout(new BorderLayout());
+
+        mainPanel.add(new SplashScreen());
 
         mainPanel.revalidate();
 
@@ -167,13 +183,16 @@ public class MainWindow extends JFrame {
 
             int noMoves = 0;
 
+            // Play all the players moves
             for (Player currentPlayer : game.allPlayers()) {
 
                 currentPlayer.play();
 
+                // Check if the player has won the game
                 if (currentPlayer.wonGame()) {
 
-                    MainWindow.getInstance().endGame("Game won by: " + currentPlayer.getPlayerName());
+                    MainWindow.getInstance().endGame(
+                        "Game won by: " + currentPlayer.getPlayerName());
 
                     return;
 
@@ -185,6 +204,7 @@ public class MainWindow extends JFrame {
 
             }
 
+            // Check if the game is a draw
             if (noMoves == game.allPlayers().size()) {
 
                 MainWindow.getInstance().endGame("Game is a draw");

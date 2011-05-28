@@ -3,6 +3,7 @@ package view.components;
 //~--- non-JDK imports --------------------------------------------------------
 
 import controllers.ButtonController;
+
 import view.MainWindow;
 
 //~--- JDK imports ------------------------------------------------------------

@@ -7,6 +7,7 @@ import models.FreezeSubjectCard;
 import models.InvalidActionException;
 import models.Player;
 import models.SubjectCard;
+
 import view.components.TableCard;
 
 /**
@@ -16,7 +17,7 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
 
     /* the card currently afflicting this one */
     private FreezeSubjectCard cardFrozenBy;
-    private TableCard         guiCard;
+    private TableCard guiCard;
 
     /* whether or not the card is graded */
     private boolean isGraded;
@@ -33,7 +34,7 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
         super(name);
 
         cardFrozenBy = null;
-        isGraded     = false;
+        isGraded = false;
 
     }
 
@@ -48,7 +49,7 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
         super(name, id);
 
         cardFrozenBy = null;
-        isGraded     = false;
+        isGraded = false;
 
     }
 
@@ -58,7 +59,8 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
 
     }
 
-    public void freezeWith(FreezeSubjectCard card) throws InvalidActionException {
+    public void freezeWith(FreezeSubjectCard card)
+            throws InvalidActionException {
 
         if (isFrozen()) {
 
@@ -76,7 +78,8 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
 
     }
 
-    public void gradeWith(FreezeSubjectCard card) throws InvalidActionException {
+    public void gradeWith(FreezeSubjectCard card)
+            throws InvalidActionException {
 
         if (isFrozen()) {
 
@@ -91,7 +94,7 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
         }
 
         cardFrozenBy = card;
-        isGraded     = true;
+        isGraded = true;
 
         Player player = getGUICard().getTable().getPlayer();
 
@@ -126,9 +129,7 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
     @Override
     public int getScore() {
 
-        return isGraded
-               ? 1
-               : 0;
+        return isGraded ? 1 : 0;
 
     }
 
@@ -138,11 +139,13 @@ public class SubjectCardImpl extends CardImpl implements SubjectCard {
 
         if (this.isGraded) {
 
-            builder.append("<font color=green size=3 face=\"sanserif\"><center>A+</center></font>");
+            builder.append(
+                "<font color=green size=3 face=\"sanserif\"><center>A+</center></font>");
 
         } else if (this.isFrozen()) {
 
-            builder.append("<font color=blue size=3 face=\"sanserif\"><center>*</center></font>");
+            builder.append(
+                "<font color=blue size=3 face=\"sanserif\"><center>*</center></font>");
 
         }
 

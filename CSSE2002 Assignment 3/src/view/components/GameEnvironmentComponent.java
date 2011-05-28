@@ -33,7 +33,7 @@ public class GameEnvironmentComponent extends JPanel {
 
         gbContraints.gridy = 0;
 
-        gbContraints.fill  = GridBagConstraints.BOTH;
+        gbContraints.fill = GridBagConstraints.BOTH;
 
         add(new TableComponent(game), gbContraints);
 
@@ -45,7 +45,8 @@ public class GameEnvironmentComponent extends JPanel {
 
         add(hand, gbContraints);
 
-        ButtonComponent nextRound = new ButtonComponent("Next Round", "next_round");
+        ButtonComponent nextRound = new ButtonComponent("Next Round",
+                                        "next_round");
 
         nextRound.setMinimumSize(new Dimension(800, 80));
 

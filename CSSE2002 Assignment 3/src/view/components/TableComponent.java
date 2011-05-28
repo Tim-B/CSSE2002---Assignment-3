@@ -36,6 +36,7 @@ public class TableComponent extends JPanel {
 
         setLayout(new GridLayout(1, game.getNumberPlayers()));
 
+        // Get a set of table cards for each of the players
         for (Player player : game.allPlayers()) {
 
             CardTable table = new CardTable(player);

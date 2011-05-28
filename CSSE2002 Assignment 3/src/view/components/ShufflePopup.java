@@ -20,8 +20,10 @@ public class ShufflePopup {
      */
     public static Boolean ShufflePopup() {
 
-        int result = new JOptionPane().showConfirmDialog(MainWindow.getInstance(), "Do you want to shuffle the deck?", "Shuffle deck",
-                         JOptionPane.YES_NO_OPTION);
+        int result =
+            new JOptionPane().showConfirmDialog(MainWindow.getInstance(),
+                "Do you want to shuffle the deck?", "Shuffle deck",
+                JOptionPane.YES_NO_OPTION);
 
         if (result == JOptionPane.YES_OPTION) {
 

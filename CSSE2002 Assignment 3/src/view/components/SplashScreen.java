@@ -7,14 +7,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * Creates the splash screen for the program and displayes a message
- *
- * @author Tim
+ * Creates the splash screen for the program and displays a message
  */
 public class SplashScreen extends JPanel {
 
     /**
-     *
+     * Constructor, generates the label.
      */
     public SplashScreen() {
 

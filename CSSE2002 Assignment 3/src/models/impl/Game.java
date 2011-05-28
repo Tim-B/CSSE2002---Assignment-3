@@ -31,13 +31,23 @@ import java.util.ArrayList;
  */
 public class Game {
 
-    /** The ArrayList of Player objects that represents all the players */
+    /**
+     * The ArrayList of Player objects that represents all the players
+     */
     private ArrayList<Player> allPlayers = new ArrayList();
 
     /** The ArrayList of Player objects that represents AI players */
     private ArrayList<VirtualPlayer> vPlayers = new ArrayList();
-    private Deck                     deck;
-    private PlayerHand               hand;
+
+    /**
+     * The deck used by the game
+     */
+    private Deck deck;
+
+    /**
+     * The instance of the GUIPlayers hand
+     */
+    private PlayerHand hand;
 
     /** The GUIPlayer object that represents the main player */
     private GUIPlayer player;
@@ -67,6 +77,7 @@ public class Game {
 
             allPlayers.add(player);
 
+            // Generate instances of the virual players
             for (int i = 0; i < 3; i++) {
 
                 VirtualPlayer vPlayer = new VirtualPlayer(deck);
@@ -77,10 +88,13 @@ public class Game {
 
             }
 
+            // Add the virtual players to the arraylist of all players
             allPlayers.addAll(vPlayers);
 
+            // Add the GUI player to that list too
             player.setPlayerName("Human player");
 
+            // Make all the players opponents of each otehr
             for (Player playerItem : allPlayers) {
 
                 for (Player subPlayer : allPlayers) {

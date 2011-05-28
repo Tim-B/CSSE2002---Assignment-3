@@ -2,10 +2,10 @@ package view.components;
 
 //~--- non-JDK imports --------------------------------------------------------
 
+import controllers.MenuController;
 
 //~--- JDK imports ------------------------------------------------------------
 
-import controllers.MenuController;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 

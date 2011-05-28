@@ -8,7 +8,8 @@ import models.FreezeSubjectCard;
 /**
  * The implementation class for FreezeSubject cards.
  */
-public class FreezeSubjectCardImpl extends CardImpl implements FreezeSubjectCard {
+public class FreezeSubjectCardImpl extends CardImpl
+        implements FreezeSubjectCard {
 
     /** Type of this FreezeSubjectCard */
     private FreezeSubjectCardType type;
@@ -19,7 +20,8 @@ public class FreezeSubjectCardImpl extends CardImpl implements FreezeSubjectCard
      * @param type
      * @throws BadCardException
      */
-    public FreezeSubjectCardImpl(String name, FreezeSubjectCardType type) throws BadCardException {
+    public FreezeSubjectCardImpl(String name, FreezeSubjectCardType type)
+            throws BadCardException {
 
         super(name);
 
@@ -34,7 +36,9 @@ public class FreezeSubjectCardImpl extends CardImpl implements FreezeSubjectCard
      * @param type
      * @throws BadCardException
      */
-    public FreezeSubjectCardImpl(String name, int id, FreezeSubjectCardType type) throws BadCardException {
+    public FreezeSubjectCardImpl(String name, int id,
+                                 FreezeSubjectCardType type)
+            throws BadCardException {
 
         super(name, id);
 

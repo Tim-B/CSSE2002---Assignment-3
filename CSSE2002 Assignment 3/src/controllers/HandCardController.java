@@ -4,22 +4,16 @@ package controllers;
 //~--- non-JDK imports --------------------------------------------------------
 
 import models.Card;
-import models.FreezeSubjectCard;
-import models.SubjectCard;
-import models.UserException;
-import view.MainWindow;
 
-import models.impl.FreezeSubjectCardImpl;
 import models.impl.GUIPlayer;
 
-import view.components.ErrorAlert;
+import view.MainWindow;
+
 import view.components.HandCard;
 
 //~--- JDK imports ------------------------------------------------------------
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Controller for the HandCard object. Extended from cardController
@@ -29,12 +23,14 @@ public class HandCardController extends CardController {
 
     public void actionPerformed(ActionEvent event) {
 
-        HandCard  cardComponent = (HandCard) event.getSource();
+        HandCard cardComponent = (HandCard) event.getSource();
 
-        Card      card          = cardComponent.getCard();
+        Card card = cardComponent.getCard();
 
-        GUIPlayer player        = MainWindow.getInstance().getGame().getGUIPlayer();
+        // Get the object of the GUI player
+        GUIPlayer player = MainWindow.getInstance().getGame().getGUIPlayer();
 
+        // Make the GUI component appear to be selected
         MainWindow.getInstance().getGame().getHand().setSelected(cardComponent);
 
         player.setCardToPlay(card);

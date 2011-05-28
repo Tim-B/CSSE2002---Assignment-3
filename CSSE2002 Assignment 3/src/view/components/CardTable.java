@@ -2,13 +2,12 @@ package view.components;
 
 //~--- non-JDK imports --------------------------------------------------------
 
-import view.MainWindow;
-
 import models.Player;
 import models.SubjectCard;
 
-//~--- JDK imports ------------------------------------------------------------
+import view.MainWindow;
 
+//~--- JDK imports ------------------------------------------------------------
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -21,7 +20,14 @@ import javax.swing.JScrollPane;
  */
 public class CardTable extends JScrollPane {
 
+    /**
+     * Stores the instance of the main panel of the table
+     */
     private JPanel panel = new JPanel();
+
+    /**
+     * Stores the instance of the player the cards belong to
+     */
     private Player player;
 
     /**
@@ -72,7 +78,6 @@ public class CardTable extends JScrollPane {
         return player;
 
     }
-
 }
 
 

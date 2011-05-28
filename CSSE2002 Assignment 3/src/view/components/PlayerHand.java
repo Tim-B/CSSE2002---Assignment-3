@@ -3,9 +3,9 @@ package view.components;
 
 //~--- non-JDK imports --------------------------------------------------------
 
-import view.MainWindow;
-
 import models.Card;
+
+import view.MainWindow;
 
 //~--- JDK imports ------------------------------------------------------------
 
@@ -75,7 +75,9 @@ public class PlayerHand extends JScrollPane {
      */
     public void rebuildHand() {
 
-        Iterator<Card> handIterator = MainWindow.getInstance().getGame().getGUIPlayer().getCardsInHandIterator();
+        Iterator<Card> handIterator =
+            MainWindow.getInstance().getGame().getGUIPlayer()
+                .getCardsInHandIterator();
 
         handPanel.removeAll();
 
