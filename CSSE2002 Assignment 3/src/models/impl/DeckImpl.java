@@ -58,7 +58,7 @@ public class DeckImpl implements Deck {
     }
 
     /**
-     *
+     * Adds a card
      * @param card
      */
     public void addCard(Card card) {
